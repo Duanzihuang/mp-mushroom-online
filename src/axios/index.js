@@ -12,7 +12,7 @@ axios.interceptors.request.use(
       config.headers.Authorization = wx.getStorageSync('token')
     }
 
-    config.headers.Authorization = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo2LCJpYXQiOjE1NTU3Mjg3MjAsImV4cCI6MTU1NTgxNTEyMH0.fq5nY-11JMq9xncfldddMu4XKA6xgzgUzcEPH4zo9gQ"
+    config.headers.Authorization = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo2LCJpYXQiOjE1NTYxOTQwNDksImV4cCI6MTU2NDgzNDA0OX0.8qwdrhExjwoaZk44kA6bduAAthtTE1EmuD1AqGNlQr8"
 
     // Appkey
     config.headers.appkey = "112233"

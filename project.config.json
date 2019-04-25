@@ -21,13 +21,38 @@
 			"current": -1,
 			"list": []
 		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
 		"game": {
 			"currentL": -1,
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
-			"list": []
+			"current": 2,
+			"list": [
+				{
+					"id": -1,
+					"name": "课程",
+					"pathName": "pages/course/main",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "学习进度",
+					"pathName": "pages/study/main",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的",
+					"pathName": "pages/my/main",
+					"scene": null
+				}
+			]
 		}
 	}
 }

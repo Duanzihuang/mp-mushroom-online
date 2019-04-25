@@ -25,7 +25,9 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
-    "mpvue": "^2.0.0"
+    "mpvue": "^2.0.0",
+    "v-circle": "^0.1.3",
+    "vue-circle-xprogress": "^0.0.3"
   },
   "devDependencies": {
     "babel-core": "^6.22.1",
