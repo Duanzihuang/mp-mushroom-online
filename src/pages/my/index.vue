@@ -1,5 +1,5 @@
 <template>
-  <div class="my-container">
+  <div class="my-container" v-if="userInfo">
     <div class="header">
       <img class="avatar" :src="userInfo.avatar" alt="">
       <p class="nickname">{{userInfo.nickname}}</p>

@@ -1,5 +1,13 @@
 {
-  "pages": ["pages/home/main", "pages/course/main","pages/study/main","pages/my/main"],
+  "pages": [
+    "pages/login/main",
+    "pages/wx_login/main",
+    "pages/phone-login/main",
+    "pages/home/main",
+    "pages/course/main",
+    "pages/study/main",
+    "pages/my/main"
+  ],
   "window": {
     "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#fff",
