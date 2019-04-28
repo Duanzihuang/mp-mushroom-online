@@ -1,13 +1,13 @@
 <template>
   <div class="course-container">
-    <div class="course-item" v-for="item in courses" :key="item.id">
+    <navigator :url="'/pages/course-detail/main?id='+item.id" class="course-item" v-for="item in courses" :key="item.id">
       <img :src="item.icon" alt="">
       <p class="title">{{item.title}}</p>
       <p class="subtitle">{{item.subtitle}}</p>
       <p class="level" v-if="item.level === 1">初级</p>
       <p class="level" v-else-if="item.level === 2">中级</p>
       <p class="level" v-else-if="item.level === 3">高级</p>
-    </div>
+    </navigator>
   </div>
 </template>
 
