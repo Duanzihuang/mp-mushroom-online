@@ -21,6 +21,9 @@
       </div>
       <div class="study-share">
         <img @click="goToStudy" src="/static/images/start_study@2x.png" alt="">
+        <div class="share-button">
+          <img src="/static/images/share@2x.png" alt="">
+        </div>
       </div>
     </div>
     <!-- 3.0 目录、讲师介绍、评价 -->
@@ -29,14 +32,44 @@
         <span @click="selectIndex = index" :class="{active:selectIndex===index}" v-for="(item,index) in menus" :key="index">{{item}}</span>
       </div>
       <div class="body">
-        <div v-if="selectIndex === 0">
-          目录
+        <div class="catelog-container" v-if="selectIndex === 0">
+          <p v-for="(item,index) in course_detail.videos" :key="item.id">
+            {{index+1}}.{{item.name}}
+          </p>
         </div>
-        <div v-else-if="selectIndex === 1">
-          讲师
+        <div class="lecturer-container" v-else-if="selectIndex === 1">
+          <div class="info">
+            <img :src="course_detail.lecturer.avatar" alt="">
+            <div class="name-follow">
+              <p>{{course_detail.lecturer.name}}</p>
+              <p>关注人数{{course_detail.lecturer.follow_count}}</p>
+            </div>
+            <p class="follow">
+              关注
+            </p>
+          </div>
+          <div class="introduce">
+            <p>{{course_detail.lecturer.introduction}}</p>
+          </div>
         </div>
-        <div v-else>
-          评价
+        <div class="comment-container" v-else>
+          <div class="comment-item" v-for="item in course_detail.comments" :key="item.id">
+            <div class="info">
+              <img :src="item.avatar" alt="">
+              <div class="nickname-content">
+                <div class="nickname">
+                  <div>{{item.nickname}}</div>&nbsp;
+                  <div><star :score="item.score"/></div>
+                </div>
+                <div>
+                  {{item.content}}
+                </div>
+              </div>
+              <p class="time">1小时前<p/>
+            </div>
+            <div class="star">
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -54,7 +87,7 @@ export default {
     return {
       course_detail:null, // 课程详情数据
       menus:['目录','讲师介绍','评价(2541)'],
-      selectIndex:0 // 选中的索引
+      selectIndex:2 // 选中的索引
     }
   },
   onLoad(options){
@@ -76,6 +109,7 @@ export default {
 
 <style lang="less" scoped>
 .course-detail-container{
+  background-color:#EFEFEF;
   position: relative;
   .cover_image{
     width: 750rpx;
@@ -114,7 +148,7 @@ export default {
     left:0;
     right: 0;
     height: 452rpx;
-    background-color: #fff;
+    background-color: #F8F8F8;
     padding:38rpx 32rpx;
     .title-price{
       margin-top: 30rpx;
@@ -152,6 +186,20 @@ export default {
         width: 568rpx;
         height: 92rpx;
       }
+      .share-button{
+        width: 92rpx;
+        height: 92rpx;
+        background-color: #fff;
+        border-radius: 10rpx;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        float: right;
+        img{
+          width:34rpx;
+          height: 34rpx;
+        }
+      }
     }
   }
   .catalog{
@@ -160,10 +208,10 @@ export default {
     z-index:5;
     width:750rpx;
     height:582rpx;
-    background-color: #fff;
+    background-color: #F8F8F8;
     .head{
       height: 120rpx;
-      background-color: #fff;
+      background-color: #F8F8F8;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -190,6 +238,100 @@ export default {
             background-color: #FF8E43;
           }
         }
+    }
+    .catelog-container{
+      padding:40rpx;
+      height:582rpx;
+      p{
+        color:#636363;
+        font-size: 15px;
+        height: 80rpx;
+        line-height: 80rpx;
+      }
+    }
+    .lecturer-container{
+      padding:40rpx;
+      .info{
+        height: 200rpx;
+        display: flex;
+        align-items: center;
+        .name-follow{
+          margin-left: 30rpx;
+          flex:1;
+          p:nth-child(1){
+            font-size: 17px;
+            color:#333333;
+          }
+          p:nth-child(2){
+            font-size: 14px;
+            margin-top: 15rpx;
+            color:#A8A8A8;
+          }
+        }
+        img{
+          margin-left: 12rpx;
+          width:120rpx;
+          height: 120rpx;
+          border-radius: 50%;
+        }
+        .follow{
+          width:136rpx;
+          height: 52rpx;
+          line-height: 52rpx;
+          text-align: center;
+          border: 1px solid #A8A8A8;
+          border-radius: 26rpx;
+          color:#A8A8A8;
+          font-size: 14px;
+        }
+      }
+      .introduce{
+        p{
+          margin-left: 12rpx;
+          font-size:12px;
+          font-family:PingFang SC;
+          font-weight:400;
+          line-height:20px;
+          color:rgba(168,168,168,1);
+          opacity:1;
+        }
+      }
+    }
+    .comment-item{
+      padding:40rpx;
+      height: 180rpx;
+      .info{
+        height: 120rpx;
+        display: flex;
+        align-items: center;
+        img{
+          margin-left:6rpx;
+          width:96rpx;
+          height: 96rpx;
+        }
+        .nickname-content{
+          flex:1;
+          margin-left:30rpx;
+          margin-right: 10rpx;
+          .nickname{
+            color:#333333;
+            font-size: 15px;
+            font-weight: bold;
+            div{
+              display: inline-block;
+            }
+          }
+          div:nth-child(2){
+            margin-top:10rpx;
+            color:#A8A8A8;
+            font-size: 12px;
+          }
+        }
+        .time{
+          color:#A8A8A8;
+          font-size: 11px;
+        }
+      }
     }
   }
 }

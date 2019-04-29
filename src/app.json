@@ -6,7 +6,8 @@
     "pages/course/main",
     "pages/study/main",
     "pages/my/main",
-    "pages/course-detail/main"
+    "pages/course-detail/main",
+    "pages/pay/main"
   ],
   "window": {
     "backgroundTextStyle": "dark",
