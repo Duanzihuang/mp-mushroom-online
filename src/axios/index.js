@@ -2,7 +2,7 @@ import Vue from 'vue'
 import axios from 'axios'
 
 // 基准路径
-axios.defaults.baseURL = 'http://127.0.0.1:3000/api/'
+axios.defaults.baseURL = 'http://huangjiangjun.top:3000/api/'
 
 // 拦截器
 axios.interceptors.request.use(
@@ -11,8 +11,6 @@ axios.interceptors.request.use(
     if (wx.getStorageSync('token')) {
       config.headers.Authorization = wx.getStorageSync('token')
     }
-
-    config.headers.Authorization = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo2LCJpYXQiOjE1NTYxOTQwNDksImV4cCI6MTU2NDgzNDA0OX0.8qwdrhExjwoaZk44kA6bduAAthtTE1EmuD1AqGNlQr8"
 
     // Appkey
     config.headers.appkey = "112233"

@@ -1,0 +1,44 @@
+<template name="e7f2a6f0">
+  <view class="_div data-v-baeb3610 my-container" wx:if="{{userInfo}}">
+    <view class="_div data-v-baeb3610 header">
+      <image class="_img data-v-baeb3610 avatar" src="{{userInfo.avatar}}" alt></image>
+      <view class="_p data-v-baeb3610 nickname">{{userInfo.nickname}}</view>
+    </view>
+    <view class="_div data-v-baeb3610 tips">
+      <view class="_div data-v-baeb3610 left">
+        <view class="_p data-v-baeb3610 title">{{userInfo.study_hour}}</view>
+        <view class="_p data-v-baeb3610 subtitle">累计学习小时</view>
+      </view>
+      <view class="_div data-v-baeb3610 middle">
+        <view class="_p data-v-baeb3610 title">{{userInfo.study_hour}}</view>
+        <view class="_p data-v-baeb3610 subtitle">我的关注</view>
+      </view>
+      <view class="_div data-v-baeb3610 right">
+        <view class="_p data-v-baeb3610 title">{{userInfo.course_count}}</view>
+        <view class="_p data-v-baeb3610 subtitle">我的课程</view>
+      </view>
+    </view>
+    <view class="_div data-v-baeb3610 cells">
+      <view class="_div data-v-baeb3610 cell">
+        <view class="_p data-v-baeb3610">学习历史</view>
+        <image src="/static/images/arrow@2x.png" alt class="_img data-v-baeb3610"></image>
+      </view>
+      <view class="_div data-v-baeb3610 cell">
+        <view class="_p data-v-baeb3610">消息提醒</view>
+        <image src="/static/images/arrow@2x.png" alt class="_img data-v-baeb3610"></image>
+      </view>
+      <view class="_div data-v-baeb3610 cell">
+        <view class="_p data-v-baeb3610">清楚缓存</view>
+        <image src="/static/images/arrow@2x.png" alt class="_img data-v-baeb3610"></image>
+      </view>
+      <view class="_div data-v-baeb3610 cell">
+        <view class="_p data-v-baeb3610">商务合作</view>
+        <image src="/static/images/arrow@2x.png" alt class="_img data-v-baeb3610"></image>
+      </view>
+      <view class="_div data-v-baeb3610 cell">
+        <view class="_p data-v-baeb3610">在线客服</view>
+        <image src="/static/images/arrow@2x.png" alt class="_img data-v-baeb3610"></image>
+      </view>
+    </view>
+  </view>
+</template>

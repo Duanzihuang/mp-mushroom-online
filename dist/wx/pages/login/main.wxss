@@ -1,0 +1,39 @@
+
+.login-container.data-v-7c1a931a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.login-container .logo.data-v-7c1a931a {
+  margin-top: 180rpx;
+  width: 212rpx;
+  height: 212rpx;
+}
+.login-container .title.data-v-7c1a931a {
+  color: #333333;
+  font-size: 48rpx;
+  margin-top: 20rpx;
+}
+.login-container .subtitle.data-v-7c1a931a {
+  color: #A8A8A8;
+  font-size: 24rpx;
+  margin-top: 30rpx;
+  position: relative;
+}
+.login-container .wx-login.data-v-7c1a931a {
+  margin-top: 200rpx;
+  width: 568rpx;
+  height: 98rpx;
+}
+.login-container .phone-login.data-v-7c1a931a {
+  margin-top: 40rpx;
+  color: #333333;
+  font-size: 30rpx;
+}
+.login-container .bottom-tip.data-v-7c1a931a {
+  color: #A8A8A8;
+  font-size: 20rpx;
+  position: absolute;
+  bottom: 30rpx;
+}

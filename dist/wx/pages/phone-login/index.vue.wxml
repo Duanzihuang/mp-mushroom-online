@@ -1,0 +1,12 @@
+<template name="a368326c">
+  <view class="_div data-v-1aa2f8d4 phone-login-container">
+    <view class="_p data-v-1aa2f8d4 phone-validate">手机号验证</view>
+    <view class="_p data-v-1aa2f8d4 subtitle">用于即使获取课程最新信息</view>
+    <view class="_div data-v-1aa2f8d4 content"><input value="{{phone}}" bindinput="handleProxy" class="_input data-v-1aa2f8d4 phone" placeholder="请输入您的手机号" type="text" data-eventid="{{'0'}}" data-comkey="{{$k}}" />
+      <view bindtap="handleProxy" class="_div data-v-1aa2f8d4 get_vcode" data-eventid="{{'1'}}" data-comkey="{{$k}}">获取验证码</view> <input value="{{vcode}}" bindinput="handleProxy" class="_input data-v-1aa2f8d4 vcode" placeholder="请输入验证码" type="text" data-eventid="{{'2'}}" data-comkey="{{$k}}" />
+    </view>
+    <view class="_div data-v-1aa2f8d4 phone-login">
+      <image bindtap="handleProxy" src="/static/images/phone_login@2x.png" alt data-eventid="{{'3'}}" data-comkey="{{$k}}" class="_img data-v-1aa2f8d4"></image>
+    </view>
+  </view>
+</template>

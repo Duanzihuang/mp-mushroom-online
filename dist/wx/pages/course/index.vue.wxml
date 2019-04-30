@@ -1,0 +1,12 @@
+<template name="5201a937">
+  <view class="_div data-v-59273827 course-container">
+    <navigator url="{{'/pages/course-detail/main?id='+item.id}}" class="_navigator data-v-59273827 course-item" wx:key="item.id" key="{{item.id}}" wx:for="{{courses}}" wx:for-index="index" wx:for-item="item">
+      <image src="{{item.icon}}" alt class="_img data-v-59273827"></image>
+      <view class="_p data-v-59273827 title">{{item.title}}</view>
+      <view class="_p data-v-59273827 subtitle">{{item.subtitle}}</view>
+      <view class="_p data-v-59273827 level" wx:if="{{item.level === 1}}">初级</view>
+      <view class="_p data-v-59273827 level" wx:elif="{{item.level === 2}}">中级</view>
+      <view class="_p data-v-59273827 level" wx:elif="{{item.level === 3}}">高级</view>
+    </navigator>
+  </view>
+</template>

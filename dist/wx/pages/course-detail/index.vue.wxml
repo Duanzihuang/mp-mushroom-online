@@ -1,0 +1,65 @@
+<import src="/components/Star.vue.wxml" /><template name="74245703">
+  <view class="_div data-v-df5f8466 course-detail-container" wx:if="{{course_detail}}">
+    <view class="_div data-v-df5f8466 cover_image">
+      <image src="{{course_detail.course.cover_image_url}}" alt class="_img data-v-df5f8466"></image>
+      <view class="_div data-v-df5f8466 play">
+        <image src="/static/images/play@2x.png" alt class="_img data-v-df5f8466"></image>
+        <view class="_p data-v-df5f8466">播放课程简介</view>
+      </view>
+    </view>
+    <view class="_div data-v-df5f8466 introduction">
+      <view class="_div data-v-df5f8466 title-price"><label class="_span data-v-df5f8466">{{course_detail.course.title}}</label> <label class="_span data-v-df5f8466">￥{{course_detail.course.price}}.00</label></view>
+      <view class="_p data-v-df5f8466 introduce">{{course_detail.course.introduction}}</view>
+      <view class="_div data-v-df5f8466 star"><template data="{{...$root[$kk+'0'], $root}}" is="a58da4cc"></template>
+        <view class="_p data-v-df5f8466">{{course_detail.course.study_count}}人在学</view>
+      </view>
+      <view class="_div data-v-df5f8466 study-share">
+        <image bindtap="handleProxy" src="/static/images/start_study@2x.png" alt data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_img data-v-df5f8466"></image>
+        <view class="_div data-v-df5f8466 share-button">
+          <image src="/static/images/share@2x.png" alt class="_img data-v-df5f8466"></image>
+        </view>
+      </view>
+    </view>
+    <view class="_div data-v-df5f8466 catalog">
+      <view class="_div data-v-df5f8466 head"><label bindtap="handleProxy" wx:key="index" key="{{index}}" data-eventid="{{'1_'+index}}" data-comkey="{{$k}}" wx:for="{{menus}}" wx:for-index="index" wx:for-item="item" class="_span data-v-df5f8466 {{[selectIndex === index ? 'active' : '']}}">{{item}}</label></view>
+      <view class="_div data-v-df5f8466 body">
+        <view class="_div data-v-df5f8466 catelog-container" wx:if="{{selectIndex === 0}}">
+          <view wx:key="item.id" key="{{item.id}}" wx:for="{{course_detail.videos}}" wx:for-index="index" wx:for-item="item" class="_p data-v-df5f8466">
+            {{index+1}}.{{item.name}}
+          </view>
+        </view>
+        <view class="_div data-v-df5f8466 lecturer-container" wx:elif="{{selectIndex === 1}}">
+          <view class="_div data-v-df5f8466 info">
+            <image src="{{course_detail.lecturer.avatar}}" alt class="_img data-v-df5f8466"></image>
+            <view class="_div data-v-df5f8466 name-follow">
+              <view class="_p data-v-df5f8466">{{course_detail.lecturer.name}}</view>
+              <view class="_p data-v-df5f8466">关注人数{{course_detail.lecturer.follow_count}}</view>
+            </view>
+            <view class="_p data-v-df5f8466 follow"> 关注 </view>
+          </view>
+          <view class="_div data-v-df5f8466 introduce">
+            <view class="_p data-v-df5f8466">{{course_detail.lecturer.introduction}}</view>
+          </view>
+        </view>
+        <view class="_div data-v-df5f8466 comment-container" wx:else>
+          <view class="_div data-v-df5f8466 comment-item" wx:key="item.id" key="{{item.id}}" wx:for="{{course_detail.comments}}" wx:for-index="index" wx:for-item="item">
+            <view class="_div data-v-df5f8466 info">
+              <image src="{{item.avatar}}" alt class="_img data-v-df5f8466"></image>
+              <view class="_div data-v-df5f8466 nickname-content">
+                <view class="_div data-v-df5f8466 nickname">
+                  <view class="_div data-v-df5f8466">{{item.nickname}}</view>  <view class="_div data-v-df5f8466"><template data="{{...$root[$kk+'1_'+index], $root}}" is="a58da4cc"></template></view>
+                </view>
+                <view class="_div data-v-df5f8466">
+                  {{item.content}}
+                </view>
+              </view>
+              <view class="_p data-v-df5f8466 time">1小时前</view>
+              <view class="_p data-v-df5f8466"></view>
+            </view>
+            <view class="_div data-v-df5f8466 star"></view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>

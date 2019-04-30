@@ -1,0 +1,10 @@
+<template name="89417aae">
+  <view class="_div data-v-7c1a931a login-container">
+    <image class="_img data-v-7c1a931a logo" src="/static/images/logo@2x.png" alt></image>
+    <view class="_p data-v-7c1a931a title">酷丁鱼在线课堂</view>
+    <view class="_p data-v-7c1a931a subtitle">陪伴从心开始</view>
+    <image class="_img data-v-7c1a931a wx-login" src="/static/images/wx_login@2x.png" alt></image>
+    <view bindtap="handleProxy" class="_p data-v-7c1a931a phone-login" data-eventid="{{'0'}}" data-comkey="{{$k}}">手机号登录</view>
+    <view class="_p data-v-7c1a931a bottom-tip">Copyright © 2019 酷丁鱼在线课堂 </view>
+  </view>
+</template>

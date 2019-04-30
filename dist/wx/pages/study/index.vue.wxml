@@ -1,0 +1,12 @@
+<import src="/components/DzhMpCircle.vue.wxml" /><template name="378c2dee">
+  <view class="_div data-v-2a65465a study-container">
+    <view class="_div data-v-2a65465a study-item" wx:key="item.sid" key="{{item.sid}}" wx:for="{{studyProgresses}}" wx:for-index="index" wx:for-item="item">
+      <image src="{{item.icon}}" alt class="_img data-v-2a65465a"></image>
+      <view class="_div data-v-2a65465a meta">
+        <view class="_p data-v-2a65465a title">{{item.title}}</view>
+        <view class="_p data-v-2a65465a progress">已学习{{item.study_hour}}课时/{{item.class_hour}}课时</view>
+      </view>
+      <view class="_div data-v-2a65465a circle"><template data="{{...$root[$kk+'0_'+index], $root}}" is="71c7dd6d"></template></view>
+    </view>
+  </view>
+</template>

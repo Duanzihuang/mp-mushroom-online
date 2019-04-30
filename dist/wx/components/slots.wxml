@@ -1,0 +1,3 @@
+<import src="/components/Star.vue.wxml" />
+<import src="/pages/common/SearchBar.vue.wxml" />
+<import src="/components/DzhMpCircle.vue.wxml" />
