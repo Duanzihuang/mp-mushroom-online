@@ -15,7 +15,7 @@
         支付方式
       </div>
       <div class="wx-pay">
-        <img src="/static/images/wx_pay@2x.png" alt="">
+        <img src="/static/images/wx_pay_logo@2x.png" alt="">
         <div class="name">
           <p>微信支付</p>
           <p>微信安全支付</p>
@@ -30,7 +30,7 @@
       <div class="content">
         <p>实付金额：</p>
         <p>￥259.00</p>
-        <img class="pay" src="/static/images/phone_login@2x.png" alt="">
+        <img class="pay" src="/static/images/wx_pay@2x.png" alt="">
       </div>
     </div>
   </div>
@@ -151,7 +151,7 @@
       .pay{
         margin-left: 50rpx;
         width: 328rpx;
-        height: 100rpx;
+        height: 92rpx;
       }
     }
   }

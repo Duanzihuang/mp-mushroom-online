@@ -1,3 +1,4 @@
+@import "../../common/vendor.wxss";
 
 .study-container.data-v-2a65465a {
   display: flex;

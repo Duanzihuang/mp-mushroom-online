@@ -4,7 +4,7 @@
     <div class="cover_image">
       <img :src="course_detail.course.cover_image_url" alt="">
       <div class="play">
-        <img src="/static/images/play@2x.png" alt="">
+        <img @click="goToStudy" src="/static/images/play@2x.png" alt="">
         <p>播放课程简介</p>
       </div>
     </div>
@@ -68,6 +68,8 @@
               <p class="time">1小时前<p/>
             </div>
             <div class="star">
+              <img src="/static/images/thumbs-up@2x.png" alt="">
+              <img src="/static/images/comment@2x.png" alt="">
             </div>
           </div>
         </div>
@@ -85,12 +87,14 @@ export default {
   },
   data(){
     return {
+      course_id:null, //课程id
       course_detail:null, // 课程详情数据
       menus:['目录','讲师介绍','评价(2541)'],
       selectIndex:2 // 选中的索引
     }
   },
   onLoad(options){
+    this.course_id = options.id
     this.getCourseDetailData(options.id)
   },
   methods:{
@@ -99,9 +103,11 @@ export default {
 
       this.course_detail = res.data.message
     },
-    // 去学习
+    // 去看视频学习
     goToStudy(){
-      console.log("去学习")
+      wx.navigateTo({
+        url: `/pages/play/main?id=${this.course_id}`
+      })
     }
   }
 }
@@ -300,6 +306,7 @@ export default {
     .comment-item{
       padding:40rpx;
       height: 180rpx;
+      border-bottom: 2px solid #F1F1F1;
       .info{
         height: 120rpx;
         display: flex;
@@ -331,6 +338,18 @@ export default {
           color:#A8A8A8;
           font-size: 11px;
         }
+      }
+    }
+    .star{
+      img{
+        margin-top: 30rpx;
+        width:44rpx;
+        height: 44rpx;
+        float: right;
+        margin-right: 20rpx;
+      }
+      img:nth-child(1){
+        margin-right: 20rpx;
       }
     }
   }

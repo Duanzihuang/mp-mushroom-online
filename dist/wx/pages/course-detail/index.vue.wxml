@@ -3,7 +3,7 @@
     <view class="_div data-v-df5f8466 cover_image">
       <image src="{{course_detail.course.cover_image_url}}" alt class="_img data-v-df5f8466"></image>
       <view class="_div data-v-df5f8466 play">
-        <image src="/static/images/play@2x.png" alt class="_img data-v-df5f8466"></image>
+        <image bindtap="handleProxy" src="/static/images/play@2x.png" alt data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_img data-v-df5f8466"></image>
         <view class="_p data-v-df5f8466">播放课程简介</view>
       </view>
     </view>
@@ -14,14 +14,14 @@
         <view class="_p data-v-df5f8466">{{course_detail.course.study_count}}人在学</view>
       </view>
       <view class="_div data-v-df5f8466 study-share">
-        <image bindtap="handleProxy" src="/static/images/start_study@2x.png" alt data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_img data-v-df5f8466"></image>
+        <image bindtap="handleProxy" src="/static/images/start_study@2x.png" alt data-eventid="{{'1'}}" data-comkey="{{$k}}" class="_img data-v-df5f8466"></image>
         <view class="_div data-v-df5f8466 share-button">
           <image src="/static/images/share@2x.png" alt class="_img data-v-df5f8466"></image>
         </view>
       </view>
     </view>
     <view class="_div data-v-df5f8466 catalog">
-      <view class="_div data-v-df5f8466 head"><label bindtap="handleProxy" wx:key="index" key="{{index}}" data-eventid="{{'1_'+index}}" data-comkey="{{$k}}" wx:for="{{menus}}" wx:for-index="index" wx:for-item="item" class="_span data-v-df5f8466 {{[selectIndex === index ? 'active' : '']}}">{{item}}</label></view>
+      <view class="_div data-v-df5f8466 head"><label bindtap="handleProxy" wx:key="index" key="{{index}}" data-eventid="{{'2_'+index}}" data-comkey="{{$k}}" wx:for="{{menus}}" wx:for-index="index" wx:for-item="item" class="_span data-v-df5f8466 {{[selectIndex === index ? 'active' : '']}}">{{item}}</label></view>
       <view class="_div data-v-df5f8466 body">
         <view class="_div data-v-df5f8466 catelog-container" wx:if="{{selectIndex === 0}}">
           <view wx:key="item.id" key="{{item.id}}" wx:for="{{course_detail.videos}}" wx:for-index="index" wx:for-item="item" class="_p data-v-df5f8466">
@@ -56,7 +56,10 @@
               <view class="_p data-v-df5f8466 time">1小时前</view>
               <view class="_p data-v-df5f8466"></view>
             </view>
-            <view class="_div data-v-df5f8466 star"></view>
+            <view class="_div data-v-df5f8466 star">
+              <image src="/static/images/thumbs-up@2x.png" alt class="_img data-v-df5f8466"></image>
+              <image src="/static/images/comment@2x.png" alt class="_img data-v-df5f8466"></image>
+            </view>
           </view>
         </view>
       </view>

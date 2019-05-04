@@ -7,6 +7,7 @@
     "pages/study/main",
     "pages/my/main",
     "pages/course-detail/main",
+    "pages/play/main",
     "pages/pay/main"
   ],
   "window": {

@@ -1,3 +1,4 @@
+@import "../../common/vendor.wxss";
 
 .phone-login-container.data-v-1aa2f8d4 {
   padding: 0rpx 68rpx;

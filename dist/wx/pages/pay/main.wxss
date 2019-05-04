@@ -1,3 +1,4 @@
+@import "../../common/vendor.wxss";
 
 .pay-container.data-v-4b3134b2 {
   height: 100%;
@@ -114,5 +115,5 @@
 .pay-container .bottom .content .pay.data-v-4b3134b2 {
   margin-left: 50rpx;
   width: 328rpx;
-  height: 100rpx;
+  height: 92rpx;
 }

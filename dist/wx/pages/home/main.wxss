@@ -1,3 +1,4 @@
+@import "../../common/vendor.wxss";
 
 .home-container.data-v-bae5bfaa {
   padding: 20rpx;

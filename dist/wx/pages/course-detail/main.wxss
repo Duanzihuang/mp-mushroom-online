@@ -1,3 +1,4 @@
+@import "../../common/vendor.wxss";
 
 .course-detail-container.data-v-df5f8466 {
   background-color: #EFEFEF;
@@ -189,6 +190,7 @@
 .course-detail-container .catalog .comment-item.data-v-df5f8466 {
   padding: 40rpx;
   height: 180rpx;
+  border-bottom: 4rpx solid #F1F1F1;
 }
 .course-detail-container .catalog .comment-item .info.data-v-df5f8466 {
   height: 120rpx;
@@ -222,18 +224,13 @@
   color: #A8A8A8;
   font-size: 22rpx;
 }
-.star.data-v-3754dcdd,
-.star-bg.data-v-3754dcdd {
-  display: flex;
-  height: 50rpx;
-  align-items: center;
+.course-detail-container .catalog .star ._img.data-v-df5f8466 {
+  margin-top: 30rpx;
+  width: 44rpx;
+  height: 44rpx;
+  float: right;
+  margin-right: 20rpx;
 }
-.star ._img.data-v-3754dcdd,
-.star-bg ._img.data-v-3754dcdd {
-  width: 38rpx;
-  height: 36rpx;
-}
-.star.data-v-3754dcdd {
-  position: absolute;
-  margin-top: -50rpx;
+.course-detail-container .catalog .star ._img.data-v-df5f8466:nth-child(1) {
+  margin-right: 20rpx;
 }

@@ -1,3 +1,4 @@
+@import "../../common/vendor.wxss";
 
 .my-container.data-v-baeb3610 {
   position: relative;

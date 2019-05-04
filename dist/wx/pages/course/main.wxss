@@ -1,3 +1,4 @@
+@import "../../common/vendor.wxss";
 
 .course-container.data-v-59273827 {
   display: flex;
