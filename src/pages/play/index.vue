@@ -2,7 +2,9 @@
   <div class="play-container" v-if="course_detail">
     <!-- 1.0 封面图 -->
     <div class="cover_image">
-      <img :src="course_detail.course.cover_image_url" alt="">
+      <!-- <img :src="course_detail.course.cover_image_url" alt="">
+       -->
+      <video @play="onVideoPlay" id="myVideo" :src="video_url" controls></video>
     </div>
     <!-- 2.0 简介 -->
     <div class="introduction">
@@ -22,8 +24,8 @@
     <div class="course-progress">
       <div class="title">课程进度</div>
       <div class="catelog-container">
-          <p v-for="(item,index) in course_detail.videos" :key="item.id">
-            <span>{{index+1}}.{{item.name}}</span>
+          <p @click="playOneVideo(item.video_url,index)" v-for="(item,index) in course_detail.videos" :key="item.id">
+            <span :class="{'active' : index === playIndex}">{{index+1}}.{{item.name}}</span>
             <span v-if="item.is_study == 1" class="studied">已学习</span>
             <span v-else :class="['time',index === playIndex ? 'active' : '']">{{item.duration}}</span>
           </p>
@@ -41,8 +43,13 @@ export default {
   },
   data(){
     return {
+      course_id:null, // 课程id
+      course_title:null,// 课程标题
+      course_price:null, // 课程价格
+      video_url:null,
       course_detail:null, // 课程详情数据
-      playIndex:3 // 正在播放视频的索引
+      playIndex:0, // 正在播放视频的索引
+      isValidateRight:false // 是否校验过权限
     }
   },
   computed: {
@@ -73,6 +80,9 @@ export default {
     }
   },
   onLoad(options){
+    this.course_id = options.id
+    this.course_title = options.title
+    this.course_price = options.price
     this.getCourseDetailData(options.id)
   },
   methods:{
@@ -80,6 +90,60 @@ export default {
       const res = await this.$axios.get(`course/play/${id}`)
 
       this.course_detail = res.data.message
+      this.video_url = this.course_detail.videos[0].video_url
+    },
+    // 播放某一条视频
+    async playOneVideo(video_url,currentIndex){
+      // 设置正在播放的索引
+      this.playIndex = currentIndex
+
+      const isCanPlay = await this.validatePlayRight()
+      if (!isCanPlay) return
+
+      const videoContext = wx.createVideoContext('myVideo')
+
+      this.video_url = video_url
+      // 播放当前选中的
+      setTimeout(() => {
+        videoContext.play()
+      }, 200);
+    },
+    // 当视频播放的时候
+    onVideoPlay(){
+      if (!this.isValidateRight){
+        this.validatePlayRight()
+      }
+    },
+    // 校验播放权限
+    async validatePlayRight(){
+        // 检查该用户是否支付了该课程
+        const res = await this.$axios.get(`/order/paystatus?course_id=${this.course_id}`)
+
+        if (res.data.pay_status === 0){
+          wx.createVideoContext('myVideo').pause()
+
+          wx.showModal({
+            title:'提示',
+            content: '您还没有支付，请先支付后，再来观看哦~', //提示的内容,
+            showCancel: true, //是否显示取消按钮,
+            confirmText: '去支付', //确定按钮的文字，默认为取消，最多 4 个字符,
+            confirmColor: '#ff8d44', //确定按钮的文字颜色
+             success:res => {
+              if (res.confirm) {
+                wx.navigateTo({ url: `/pages/pay/main?course_id=${this.course_id}&course_title=${this.course_title}&course_price=${this.course_price}` });
+              }
+            }
+          })
+
+          return new Promise((resolve,reject) => {
+            resolve(false)
+          })
+        } else {
+          this.isValidateRight = true
+          return new Promise((resolve,reject) => {
+            resolve(true)
+          })
+        }
     }
   }
 }
@@ -99,11 +163,15 @@ export default {
       width: 750rpx;
       height: 434rpx;
     }
+    video{
+      width: 750rpx;
+      height: 434rpx;
+    }
   }
   .introduction{
     z-index: 3;
     position: absolute;
-    margin-top: -30rpx;
+    margin-top: -10rpx;
     border-radius:16px 16px 0px 0px;
     border-bottom: 1px solid #F5F5F5;
     // width:750rpx;

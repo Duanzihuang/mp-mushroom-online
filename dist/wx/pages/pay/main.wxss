@@ -113,7 +113,7 @@
   font-weight: bold;
 }
 .pay-container .bottom .content .pay.data-v-4b3134b2 {
-  margin-left: 50rpx;
+  margin-left: 80rpx;
   width: 328rpx;
   height: 92rpx;
 }

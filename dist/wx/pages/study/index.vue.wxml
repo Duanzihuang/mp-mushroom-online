@@ -8,5 +8,8 @@
       </view>
       <view class="_div data-v-2a65465a circle"><template data="{{...$root[$kk+'0_'+index], $root}}" is="71c7dd6d"></template></view>
     </view>
+    <view wx:if="{{studyProgresses.length === 0}}" class="_div data-v-2a65465a">
+      <view class="_p data-v-2a65465a no-study-tip">您还没有任何学习记录哦，赶快去学习吧~</view>
+    </view>
   </view>
 </template>

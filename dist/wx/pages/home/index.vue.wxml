@@ -1,34 +1,34 @@
 <import src="/pages/common/SearchBar.vue.wxml" /><template name="9676d70a">
   <view class="_div data-v-bae5bfaa home-container"><template placeholder="请输入课程的名称" data="{{...$root[$kk+'0'], $root}}" is="08765860"></template>
     <swiper indicator-dots circular autoplay indicator-active-color="#fff" interval="{{3000}}" class="_swiper data-v-bae5bfaa">
-      <block wx:key="item.id" key="{{item.id}}" wx:for="{{swipers}}" wx:for-index="index" wx:for-item="item">
+      <navigator url="{{'/pages/course-detail/main?id='+item.course_id}}" wx:key="item.id" key="{{item.id}}" wx:for="{{swipers}}" wx:for-index="index" wx:for-item="item" class="_navigator data-v-bae5bfaa">
         <swiper-item class="_swiper-item data-v-bae5bfaa">
           <image src="{{item.img_url}}" class="_image data-v-bae5bfaa"></image>
         </swiper-item>
-      </block>
+      </navigator>
     </swiper>
     <view class="_div data-v-bae5bfaa">
       <view class="_div data-v-bae5bfaa tips">
         <view class="_p data-v-bae5bfaa">推荐课程</view>
-        <image src="/static/images/arrow@2x.png" alt class="_img data-v-bae5bfaa"></image>
+        <image bindtap="handleProxy" src="/static/images/arrow@2x.png" alt data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_img data-v-bae5bfaa"></image>
       </view>
       <scroll-view scroll-x class="_scroll-view data-v-bae5bfaa course-container">
-        <view class="_div data-v-bae5bfaa course-item" wx:key="item.id" key="{{item.id}}" wx:for="{{courses}}" wx:for-index="index" wx:for-item="item">
+        <navigator url="{{'/pages/course-detail/main?id='+item.relation_id}}" class="_navigator data-v-bae5bfaa course-item" wx:key="item.id" key="{{item.id}}" wx:for="{{courses}}" wx:for-index="index" wx:for-item="item">
           <image src="{{item.icon}}" alt class="_img data-v-bae5bfaa"></image>
-        </view>
+        </navigator>
       </scroll-view>
     </view>
     <view class="_div data-v-bae5bfaa">
       <view class="_div data-v-bae5bfaa tips">
         <view class="_p data-v-bae5bfaa">热门视频</view>
-        <image src="/static/images/arrow@2x.png" alt class="_img data-v-bae5bfaa"></image>
+        <image bindtap="handleProxy" src="/static/images/arrow@2x.png" alt data-eventid="{{'1'}}" data-comkey="{{$k}}" class="_img data-v-bae5bfaa"></image>
       </view>
       <view class="_div data-v-bae5bfaa hot-video">
-        <view class="_div data-v-bae5bfaa video-item" wx:key="item.id" key="{{item.id}}" wx:for="{{videos}}" wx:for-index="index" wx:for-item="item">
+        <navigator url="{{'/pages/course-detail/main?id='+item.course_id}}" class="_navigator data-v-bae5bfaa video-item" wx:key="item.id" key="{{item.id}}" wx:for="{{videos}}" wx:for-index="index" wx:for-item="item">
           <image src="{{item.cover_photo_url}}" alt class="_img data-v-bae5bfaa"></image>
           <view class="_p data-v-bae5bfaa title">{{item.name}}</view>
           <view class="_p data-v-bae5bfaa subtitle">{{item.view_count}}人已观看</view>
-        </view>
+        </navigator>
       </view>
     </view>
   </view>

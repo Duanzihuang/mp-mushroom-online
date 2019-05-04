@@ -3,11 +3,11 @@
     <div class="order-info">
       <img src="/static/temp/order@2x.png" alt="">
       <div class="name">
-        <p>创意手绘班</p>
+        <p>{{course_title}}</p>
         <p>永久观看</p>
       </div>
       <p class="price">
-        ￥259.00
+        ￥{{course_price}}
       </p>
     </div>
     <div class="pay-style">
@@ -29,12 +29,64 @@
     <div class="bottom">
       <div class="content">
         <p>实付金额：</p>
-        <p>￥259.00</p>
-        <img class="pay" src="/static/images/wx_pay@2x.png" alt="">
+        <p>￥{{course_price}}</p>
+        <img @click="createOrderAndPay" class="pay" src="/static/images/wx_pay@2x.png" alt="">
       </div>
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  data(){
+    return {
+      course_id:null,
+      course_title:null,
+      course_price:null
+    }
+  },
+  onLoad(options){
+    this.course_id = options.course_id
+    this.course_title = options.course_title
+    this.course_price = options.course_price
+  },
+  methods:{
+    async createOrderAndPay(){
+      // 创建订单
+      const res = await this.$axios.post('/order/create',{
+        course_id:this.course_id,
+        price:this.course_price
+      })
+
+      if (res.data.status === 0){
+        // 支付订单
+        this.payOrder(res.data.order_id)
+      }
+    },
+    async payOrder(order_id){
+      const res = await this.$axios.post('/order/pay',{
+        order_id
+      })
+
+      if (res.data.status === 0){ // 支付成功
+        wx.showToast({
+          title: res.data.message, //提示的内容,
+          icon: 'success', //图标,
+          duration: 2000, //延迟时间,
+          mask: true, //显示透明蒙层，防止触摸穿透,
+          success: res => {
+            setTimeout(() => {
+              wx.navigateBack({
+                delta: 1 // 回退前 delta(默认为1) 页面
+              })
+            }, 2000);
+          }
+        })
+      }
+    }
+  }
+}
+</script>
 
 <style lang="less" scoped>
 .pay-container{
@@ -149,7 +201,7 @@
         font-weight: bold;
       }
       .pay{
-        margin-left: 50rpx;
+        margin-left: 80rpx;
         width: 328rpx;
         height: 92rpx;
       }

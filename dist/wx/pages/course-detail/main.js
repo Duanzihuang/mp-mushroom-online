@@ -83,13 +83,27 @@ if (false) {(function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_asyncToGenerator__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_asyncToGenerator__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_asyncToGenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_asyncToGenerator__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_Star__ = __webpack_require__(47);
 
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -181,13 +195,18 @@ if (false) {(function () {
     return {
       course_id: null, //课程id
       course_detail: null, // 课程详情数据
+      isPlaying: false, //是否正在播放视频
       menus: ['目录', '讲师介绍', '评价(2541)'],
-      selectIndex: 2 // 选中的索引
+      selectIndex: 0 // 选中的索引
     };
   },
   onLoad: function onLoad(options) {
     this.course_id = options.id;
     this.getCourseDetailData(options.id);
+  },
+  onUnload: function onUnload() {
+    this.isPlaying = false;
+    this.selectIndex = 0;
   },
 
   methods: {
@@ -218,10 +237,20 @@ if (false) {(function () {
       }))();
     },
 
+    // 播放课程简介视频
+    playCourseVideo: function playCourseVideo() {
+      this.isPlaying = true;
+      var videoContent = wx.createVideoContext('courseVideoId');
+      videoContent.play();
+    },
+
     // 去看视频学习
     goToStudy: function goToStudy() {
+      var videoContent = wx.createVideoContext('courseVideoId');
+      videoContent.pause();
+
       wx.navigateTo({
-        url: '/pages/play/main?id=' + this.course_id
+        url: '/pages/play/main?id=' + this.course_id + '&title=' + this.course_detail.course.title + '&price=' + this.course_detail.course.price
       });
     }
   }
@@ -236,7 +265,7 @@ if (false) {(function () {
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return (_vm.course_detail) ? _c('div', {
     staticClass: "course-detail-container"
-  }, [_c('div', {
+  }, [_c('div', [(!_vm.isPlaying) ? _c('div', {
     staticClass: "cover_image"
   }, [_c('img', {
     attrs: {
@@ -252,9 +281,16 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "eventid": '0'
     },
     on: {
-      "click": _vm.goToStudy
+      "click": _vm.playCourseVideo
     }
-  }), _vm._v(" "), _c('p', [_vm._v("播放课程简介")])], 1)]), _vm._v(" "), _c('div', {
+  }), _vm._v(" "), _c('p', [_vm._v("播放课程简介")])], 1)]) : _c('div', {
+    staticClass: "course_video"
+  }, [_c('video', {
+    attrs: {
+      "id": "courseVideoId",
+      "src": _vm.course_detail.course.course_video_url
+    }
+  })])]), _vm._v(" "), _c('div', {
     staticClass: "introduction"
   }, [_c('div', {
     staticClass: "title-price"
@@ -301,13 +337,13 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     staticClass: "body"
   }, [(_vm.selectIndex === 0) ? _c('div', {
     staticClass: "catelog-container"
-  }, _vm._l((_vm.course_detail.videos), function(item, index) {
+  }, [_vm._l((_vm.course_detail.videos), function(item, index) {
     return _c('p', {
       key: item.id
     }, [_vm._v("\n          " + _vm._s(index + 1) + "." + _vm._s(item.name) + "\n        ")])
-  })) : (_vm.selectIndex === 1) ? _c('div', {
+  }), _vm._v(" "), (!_vm.course_detail.videos) ? _c('p', [_vm._v("\n          暂无课程视频哦，请联系客服添加~\n        ")]) : _vm._e()], 2) : (_vm.selectIndex === 1) ? _c('div', {
     staticClass: "lecturer-container"
-  }, [_c('div', {
+  }, [(_vm.course_detail.lecturer) ? _c('div', {
     staticClass: "info"
   }, [_c('img', {
     attrs: {
@@ -318,11 +354,16 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     staticClass: "name-follow"
   }, [_c('p', [_vm._v(_vm._s(_vm.course_detail.lecturer.name))]), _vm._v(" "), _c('p', [_vm._v("关注人数" + _vm._s(_vm.course_detail.lecturer.follow_count))])], 1), _vm._v(" "), _c('p', {
     staticClass: "follow"
-  }, [_vm._v("\n            关注\n          ")])], 1), _vm._v(" "), _c('div', {
+  }, [_vm._v("\n            关注\n          ")])], 1) : _vm._e(), _vm._v(" "), (_vm.course_detail.lecturer) ? _c('div', {
     staticClass: "introduce"
-  }, [_c('p', [_vm._v(_vm._s(_vm.course_detail.lecturer.introduction))])], 1)]) : _c('div', {
+  }, [_c('p', [_vm._v(_vm._s(_vm.course_detail.lecturer.introduction))])], 1) : _vm._e(), _vm._v(" "), (!_vm.course_detail.lecturer) ? _c('p', {
+    staticStyle: {
+      "color": "#636363",
+      "font-size": "15px"
+    }
+  }, [_vm._v("\n          暂无讲师简介哦~\n        ")]) : _vm._e()], 1) : _c('div', {
     staticClass: "comment-container"
-  }, _vm._l((_vm.course_detail.comments), function(item, index) {
+  }, [_vm._l((_vm.course_detail.comments), function(item, index) {
     return _c('div', {
       key: item.id,
       staticClass: "comment-item"
@@ -345,7 +386,13 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     })], 1)]), _vm._v(" "), _c('div', [_vm._v("\n                " + _vm._s(item.content) + "\n              ")])]), _vm._v(" "), _c('p', {
       staticClass: "time"
     }, [_vm._v("1小时前")]), _c('p')], 1), _vm._v(" "), _vm._m(1, true)])
-  }))])])]) : _vm._e()
+  }), _vm._v(" "), (!_vm.course_detail.comments) ? _c('p', {
+    staticStyle: {
+      "color": "#636363",
+      "font-size": "15px",
+      "padding": "38rpx"
+    }
+  }, [_vm._v("\n          暂无评论哦，请学习之后再评价~\n        ")]) : _vm._e()], 2)])])]) : _vm._e()
 }
 var staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {

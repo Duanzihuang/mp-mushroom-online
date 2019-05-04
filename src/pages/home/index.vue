@@ -4,36 +4,36 @@
     <search-bar placeholder="请输入课程的名称"></search-bar>
     <!-- 轮播图 -->
     <swiper indicator-dots circular autoplay indicator-active-color="#fff" :interval="3000">
-        <block v-for="item in swipers" :key="item.id">
+        <navigator :url="'/pages/course-detail/main?id='+item.course_id" v-for="item in swipers" :key="item.id">
             <swiper-item>
                 <image :src="item.img_url"></image>
             </swiper-item>
-        </block>
+        </navigator>
     </swiper>
     <!-- 推荐课程 -->
     <div>
       <div class="tips">
         <p>推荐课程</p>
-        <img src="/static/images/arrow@2x.png" alt="">
+        <img @click="goToCoursePage" src="/static/images/arrow@2x.png" alt="">
       </div>
       <scroll-view scroll-x class="course-container">
-        <div class="course-item" v-for="item in courses" :key="item.id">
+        <navigator :url="'/pages/course-detail/main?id='+item.relation_id" class="course-item" v-for="item in courses" :key="item.id">
           <img :src="item.icon" alt="">
-        </div>
+        </navigator>
       </scroll-view>
     </div>
     <!-- 热门视频 -->
     <div>
       <div class="tips">
         <p>热门视频</p>
-        <img src="/static/images/arrow@2x.png" alt="">
+        <img @click="goToCourseDetail(3)" src="/static/images/arrow@2x.png" alt="">
       </div>
       <div class="hot-video">
-        <div class="video-item" v-for="item in videos" :key="item.id">
+        <navigator :url="'/pages/course-detail/main?id='+item.course_id" class="video-item" v-for="item in videos" :key="item.id">
           <img :src="item.cover_photo_url" alt="">
           <p class="title">{{item.name}}</p>
           <p class="subtitle">{{item.view_count}}人已观看</p>
-        </div>
+        </navigator>
       </div>
     </div>
   </div>
@@ -79,6 +79,14 @@ export default {
       const res = await this.$axios.get('home/video')
 
       this.videos = res.data.message
+    },
+    // 切换到课程页面
+    goToCoursePage(){
+      wx.switchTab({ url: '/pages/course/main' })
+    },
+    // 跳转到课程详情页面
+    goToCourseDetail(id){
+      wx.navigateTo({url: `/pages/course-detail/main?id=${id}`})
     }
   }
 }

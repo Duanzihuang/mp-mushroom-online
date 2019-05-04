@@ -1,0 +1,16 @@
+
+.star.data-v-3754dcdd,
+.star-bg.data-v-3754dcdd {
+  display: flex;
+  height: 50rpx;
+  align-items: center;
+}
+.star ._img.data-v-3754dcdd,
+.star-bg ._img.data-v-3754dcdd {
+  width: 38rpx;
+  height: 36rpx;
+}
+.star.data-v-3754dcdd {
+  position: absolute;
+  margin-top: -50rpx;
+}

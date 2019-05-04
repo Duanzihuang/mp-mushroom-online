@@ -83,9 +83,9 @@ if (false) {(function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_asyncToGenerator__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_asyncToGenerator__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_asyncToGenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_asyncToGenerator__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_SearchBar__ = __webpack_require__(128);
 
@@ -237,6 +237,16 @@ if (false) {(function () {
           }
         }, _callee3, _this3);
       }))();
+    },
+
+    // 切换到课程页面
+    goToCoursePage: function goToCoursePage() {
+      wx.switchTab({ url: '/pages/course/main' });
+    },
+
+    // 跳转到课程详情页面
+    goToCourseDetail: function goToCourseDetail(id) {
+      wx.navigateTo({ url: '/pages/course-detail/main?id=' + id });
     }
   }
 });
@@ -400,8 +410,11 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "interval": 3000
     }
   }, _vm._l((_vm.swipers), function(item, index) {
-    return _c('block', {
-      key: item.id
+    return _c('navigator', {
+      key: item.id,
+      attrs: {
+        "url": '/pages/course-detail/main?id=' + item.course_id
+      }
     }, [_c('swiper-item', {
       attrs: {
         "mpcomid": '1_' + index
@@ -416,7 +429,11 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
   }, [_c('p', [_vm._v("推荐课程")]), _vm._v(" "), _c('img', {
     attrs: {
       "src": "/static/images/arrow@2x.png",
-      "alt": ""
+      "alt": "",
+      "eventid": '0'
+    },
+    on: {
+      "click": _vm.goToCoursePage
     }
   })], 1), _vm._v(" "), _c('scroll-view', {
     staticClass: "course-container",
@@ -424,9 +441,12 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "scroll-x": ""
     }
   }, _vm._l((_vm.courses), function(item, index) {
-    return _c('div', {
+    return _c('navigator', {
       key: item.id,
-      staticClass: "course-item"
+      staticClass: "course-item",
+      attrs: {
+        "url": '/pages/course-detail/main?id=' + item.relation_id
+      }
     }, [_c('img', {
       attrs: {
         "src": item.icon,
@@ -438,14 +458,23 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
   }, [_c('p', [_vm._v("热门视频")]), _vm._v(" "), _c('img', {
     attrs: {
       "src": "/static/images/arrow@2x.png",
-      "alt": ""
+      "alt": "",
+      "eventid": '1'
+    },
+    on: {
+      "click": function($event) {
+        _vm.goToCourseDetail(3)
+      }
     }
   })], 1), _vm._v(" "), _c('div', {
     staticClass: "hot-video"
   }, _vm._l((_vm.videos), function(item, index) {
-    return _c('div', {
+    return _c('navigator', {
       key: item.id,
-      staticClass: "video-item"
+      staticClass: "video-item",
+      attrs: {
+        "url": '/pages/course-detail/main?id=' + item.course_id
+      }
     }, [_c('img', {
       attrs: {
         "src": item.cover_photo_url,

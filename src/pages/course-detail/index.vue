@@ -1,11 +1,16 @@
 <template>
   <div class="course-detail-container" v-if="course_detail">
     <!-- 1.0 封面图 -->
-    <div class="cover_image">
-      <img :src="course_detail.course.cover_image_url" alt="">
-      <div class="play">
-        <img @click="goToStudy" src="/static/images/play@2x.png" alt="">
-        <p>播放课程简介</p>
+    <div>
+      <div v-if="!isPlaying" class="cover_image">
+        <img :src="course_detail.course.cover_image_url" alt="">
+        <div class="play">
+          <img @click="playCourseVideo" src="/static/images/play@2x.png" alt="">
+          <p>播放课程简介</p>
+        </div>
+      </div>
+      <div v-else class="course_video">
+        <video id="courseVideoId" :src="course_detail.course.course_video_url"></video>
       </div>
     </div>
     <!-- 2.0 简介 -->
@@ -36,9 +41,12 @@
           <p v-for="(item,index) in course_detail.videos" :key="item.id">
             {{index+1}}.{{item.name}}
           </p>
+          <p v-if="!course_detail.videos">
+            暂无课程视频哦，请联系客服添加~
+          </p>
         </div>
         <div class="lecturer-container" v-else-if="selectIndex === 1">
-          <div class="info">
+          <div v-if="course_detail.lecturer" class="info">
             <img :src="course_detail.lecturer.avatar" alt="">
             <div class="name-follow">
               <p>{{course_detail.lecturer.name}}</p>
@@ -48,9 +56,12 @@
               关注
             </p>
           </div>
-          <div class="introduce">
+          <div v-if="course_detail.lecturer" class="introduce">
             <p>{{course_detail.lecturer.introduction}}</p>
           </div>
+          <p style="color:#636363;font-size:15px;" v-if="!course_detail.lecturer">
+            暂无讲师简介哦~
+          </p>
         </div>
         <div class="comment-container" v-else>
           <div class="comment-item" v-for="item in course_detail.comments" :key="item.id">
@@ -72,6 +83,9 @@
               <img src="/static/images/comment@2x.png" alt="">
             </div>
           </div>
+          <p style="color:#636363;font-size:15px;padding:38rpx;" v-if="!course_detail.comments">
+            暂无评论哦，请学习之后再评价~
+          </p>
         </div>
       </div>
     </div>
@@ -89,13 +103,18 @@ export default {
     return {
       course_id:null, //课程id
       course_detail:null, // 课程详情数据
+      isPlaying:false, //是否正在播放视频
       menus:['目录','讲师介绍','评价(2541)'],
-      selectIndex:2 // 选中的索引
+      selectIndex:0 // 选中的索引
     }
   },
   onLoad(options){
     this.course_id = options.id
     this.getCourseDetailData(options.id)
+  },
+  onUnload(){
+    this.isPlaying = false
+    this.selectIndex = 0
   },
   methods:{
     async getCourseDetailData(id){
@@ -103,10 +122,19 @@ export default {
 
       this.course_detail = res.data.message
     },
+    // 播放课程简介视频
+    playCourseVideo(){
+      this.isPlaying = true
+      const videoContent = wx.createVideoContext('courseVideoId')
+      videoContent.play()
+    },
     // 去看视频学习
     goToStudy(){
+      const videoContent = wx.createVideoContext('courseVideoId')
+      videoContent.pause()
+
       wx.navigateTo({
-        url: `/pages/play/main?id=${this.course_id}`
+        url: `/pages/play/main?id=${this.course_id}&title=${this.course_detail.course.title}&price=${this.course_detail.course.price}`
       })
     }
   }
@@ -145,10 +173,18 @@ export default {
       }
     }
   }
+  .course_video{
+    width: 750rpx;
+    height: 434rpx;
+    video{
+      width: 750rpx;
+      height: 434rpx;
+    }
+  }
   .introduction{
     z-index: 3;
     position: absolute;
-    margin-top: -30rpx;
+    margin-top: -10rpx;
     border-radius:16px 16px 0px 0px;
     // width:750rpx;
     left:0;

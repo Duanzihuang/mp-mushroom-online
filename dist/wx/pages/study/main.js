@@ -83,13 +83,16 @@ if (false) {(function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_asyncToGenerator__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_asyncToGenerator__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_asyncToGenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_asyncToGenerator__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_DzhMpCircle__ = __webpack_require__(162);
 
 
+//
+//
+//
 //
 //
 //
@@ -344,7 +347,7 @@ if (false) {
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "study-container"
-  }, _vm._l((_vm.studyProgresses), function(item, index) {
+  }, [_vm._l((_vm.studyProgresses), function(item, index) {
     return _c('div', {
       key: item.sid,
       staticClass: "study-item"
@@ -370,7 +373,9 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
         "mpcomid": '0_' + index
       }
     })], 1)])
-  }))
+  }), _vm._v(" "), (_vm.studyProgresses.length === 0) ? _c('div', [_c('p', {
+    staticClass: "no-study-tip"
+  }, [_vm._v("您还没有任何学习记录哦，赶快去学习吧~")])], 1) : _vm._e()], 2)
 }
 var staticRenderFns = []
 render._withStripped = true

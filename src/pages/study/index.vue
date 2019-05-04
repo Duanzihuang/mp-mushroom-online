@@ -10,6 +10,9 @@
         <dzh-mp-circle :canvasId="item.sid" :progress="item.study_progress" :width="55" :height="55"></dzh-mp-circle>
       </div>
     </div>
+    <div v-if="studyProgresses.length === 0">
+      <p class="no-study-tip">您还没有任何学习记录哦，赶快去学习吧~</p>
+    </div>
   </div>
 </template>
 
@@ -77,5 +80,9 @@ export default {
     height: 109rpx;
     margin-right: 56rpx;
   }
+}
+.no-study-tip{
+  margin-top:500rpx;
+  font-size:15px;
 }
 </style>

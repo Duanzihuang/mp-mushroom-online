@@ -3,10 +3,11 @@
     <view class="_div data-v-4b3134b2 order-info">
       <image src="/static/temp/order@2x.png" alt class="_img data-v-4b3134b2"></image>
       <view class="_div data-v-4b3134b2 name">
-        <view class="_p data-v-4b3134b2">创意手绘班</view>
+        <view class="_p data-v-4b3134b2">{{course_title}}</view>
         <view class="_p data-v-4b3134b2">永久观看</view>
       </view>
-      <view class="_p data-v-4b3134b2 price"> ￥259.00 </view>
+      <view class="_p data-v-4b3134b2 price"> ￥{{course_price}}
+      </view>
     </view>
     <view class="_div data-v-4b3134b2 pay-style">
       <view class="_div data-v-4b3134b2"> 支付方式 </view>
@@ -23,8 +24,8 @@
     <view class="_div data-v-4b3134b2 bottom">
       <view class="_div data-v-4b3134b2 content">
         <view class="_p data-v-4b3134b2">实付金额：</view>
-        <view class="_p data-v-4b3134b2">￥259.00</view>
-        <image class="_img data-v-4b3134b2 pay" src="/static/images/wx_pay@2x.png" alt></image>
+        <view class="_p data-v-4b3134b2">￥{{course_price}}</view>
+        <image bindtap="handleProxy" class="_img data-v-4b3134b2 pay" src="/static/images/wx_pay@2x.png" alt data-eventid="{{'0'}}" data-comkey="{{$k}}"></image>
       </view>
     </view>
   </view>

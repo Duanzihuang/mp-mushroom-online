@@ -39,6 +39,10 @@
   height: 109rpx;
   margin-right: 56rpx;
 }
+.no-study-tip.data-v-2a65465a {
+  margin-top: 500rpx;
+  font-size: 30rpx;
+}
 .mp-circle-container.data-v-fe2fe66c {
   position: relative;
 }
