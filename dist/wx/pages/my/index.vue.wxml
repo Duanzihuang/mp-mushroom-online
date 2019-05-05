@@ -1,8 +1,8 @@
 <template name="e7f2a6f0">
   <view class="_div data-v-baeb3610 my-container" wx:if="{{userInfo}}">
     <view class="_div data-v-baeb3610 header">
-      <image class="_img data-v-baeb3610 avatar" src="{{userInfo.avatar}}" alt></image>
-      <view class="_p data-v-baeb3610 nickname">{{userInfo.nickname}}</view>
+      <image class="_img data-v-baeb3610 avatar" src="{{userInfo.avatar || '/static/images/avatar@2x.png'}}" alt></image>
+      <view class="_p data-v-baeb3610 nickname">{{userInfo.nickname || '酷小鱼'}}</view>
     </view>
     <view class="_div data-v-baeb3610 tips">
       <view class="_div data-v-baeb3610 left">

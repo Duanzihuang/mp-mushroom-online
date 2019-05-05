@@ -7,7 +7,7 @@
         v-model="phone"
         class="phone"
         placeholder="请输入您的手机号"
-        type="text"
+        type="number"
       >
       <div
         @click="getVcode"
@@ -17,7 +17,7 @@
         v-model="vcode"
         class="vcode"
         placeholder="请输入验证码"
-        type="text"
+        type="number"
       >
     </div>
     <div class="phone-login">

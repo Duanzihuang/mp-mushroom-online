@@ -1,8 +1,8 @@
 <template>
   <div class="my-container" v-if="userInfo">
     <div class="header">
-      <img class="avatar" :src="userInfo.avatar" alt="">
-      <p class="nickname">{{userInfo.nickname}}</p>
+      <img class="avatar" :src="userInfo.avatar || '/static/images/avatar@2x.png'" alt="">
+      <p class="nickname">{{userInfo.nickname || '酷小鱼'}}</p>
     </div>
     <div class="tips">
       <div class="left">

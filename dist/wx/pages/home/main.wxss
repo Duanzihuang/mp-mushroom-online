@@ -11,8 +11,6 @@ swiper.data-v-bae5bfaa {
 swiper swiper-item.data-v-bae5bfaa {
   width: 100%;
   height: 100%;
-  border-radius: 20rpx;
-  overflow: hidden;
 }
 swiper image.data-v-bae5bfaa {
   width: 100%;

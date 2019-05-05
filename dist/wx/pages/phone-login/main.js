@@ -246,7 +246,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     staticClass: "phone",
     attrs: {
       "placeholder": "请输入您的手机号",
-      "type": "text",
+      "type": "number",
       "eventid": '0'
     },
     domProps: {
@@ -276,7 +276,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     staticClass: "vcode",
     attrs: {
       "placeholder": "请输入验证码",
-      "type": "text",
+      "type": "number",
       "eventid": '2'
     },
     domProps: {

@@ -103,8 +103,6 @@ swiper{
   swiper-item{
     width:100%;
     height: 100%;
-    border-radius: 20rpx;
-    overflow: hidden;
   }
   image{
     width:100%;

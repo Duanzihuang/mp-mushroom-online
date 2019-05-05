@@ -186,7 +186,6 @@ export default {
     position: absolute;
     margin-top: -10rpx;
     border-radius:16px 16px 0px 0px;
-    // width:750rpx;
     left:0;
     right: 0;
     height: 452rpx;
@@ -314,7 +313,6 @@ export default {
           margin-left: 12rpx;
           width:120rpx;
           height: 120rpx;
-          border-radius: 50%;
         }
         .follow{
           width:136rpx;

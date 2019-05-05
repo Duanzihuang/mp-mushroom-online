@@ -174,7 +174,6 @@
   margin-left: 12rpx;
   width: 120rpx;
   height: 120rpx;
-  border-radius: 50%;
 }
 .course-detail-container .catalog .lecturer-container .info .follow.data-v-df5f8466 {
   width: 136rpx;

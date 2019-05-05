@@ -189,12 +189,12 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
   }, [_c('img', {
     staticClass: "avatar",
     attrs: {
-      "src": _vm.userInfo.avatar,
+      "src": _vm.userInfo.avatar || '/static/images/avatar@2x.png',
       "alt": ""
     }
   }), _vm._v(" "), _c('p', {
     staticClass: "nickname"
-  }, [_vm._v(_vm._s(_vm.userInfo.nickname))])], 1), _vm._v(" "), _c('div', {
+  }, [_vm._v(_vm._s(_vm.userInfo.nickname || '酷小鱼'))])], 1), _vm._v(" "), _c('div', {
     staticClass: "tips"
   }, [_c('div', {
     staticClass: "left"
