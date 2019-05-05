@@ -159,6 +159,10 @@ __WEBPACK_IMPORTED_MODULE_2_axios___default.a.interceptors.request.use(function 
 // 适配器
 __WEBPACK_IMPORTED_MODULE_2_axios___default.a.defaults.adapter = function (config) {
   return new __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_promise___default.a(function (resolve, reject) {
+    wx.showLoading({
+      title: '数据加载中...', //提示的内容,
+      mask: true //显示透明蒙层，防止触摸穿透
+    });
     global.mpvue.request({
       url: config.url, //开发者服务器接口地址",
       data: config.data, //请求的参数",

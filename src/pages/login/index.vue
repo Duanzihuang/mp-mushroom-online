@@ -47,8 +47,7 @@
 export default {
   data(){
     return {
-      isWxLogin:false,
-      // code:null
+      isWxLogin:false
     }
   },
   onShow(){
@@ -79,8 +78,6 @@ export default {
       // 获取登录的code
       wx.login({
         success: async ({code}) => {
-          // this.code = code
-
           const res = await this.$axios.post('/user/wxlogin',{
             code,
             nickname:e.mp.detail.userInfo.nickName,

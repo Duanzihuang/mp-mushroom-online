@@ -139,7 +139,6 @@ if (false) {(function () {
   data: function data() {
     return {
       isWxLogin: false
-      // code:null
     };
   },
   onShow: function onShow() {

@@ -32,6 +32,10 @@ axios.interceptors.request.use(
 // 适配器
 axios.defaults.adapter = function(config) {
   return new Promise((resolve, reject) => {
+    wx.showLoading({
+      title: '数据加载中...', //提示的内容,
+      mask: true //显示透明蒙层，防止触摸穿透
+    });
     mpvue.request({
       url: config.url, //开发者服务器接口地址",
       data: config.data, //请求的参数",
