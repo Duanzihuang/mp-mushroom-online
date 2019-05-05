@@ -13,7 +13,7 @@
   "window": {
     "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "酷丁鱼课堂",
+    "navigationBarTitleText": "蘑菇在线",
     "navigationBarTextStyle": "black"
   },
   "tabBar": {
@@ -47,6 +47,5 @@
         "selectedIconPath": "static/tabs/icon_my_selected@2x.png"
       }
     ]
-  },
-  "sitemapLocation": "sitemap.json"
+  }
 }

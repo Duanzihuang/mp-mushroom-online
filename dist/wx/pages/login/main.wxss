@@ -22,8 +22,14 @@
   width: 292rpx;
   position: relative;
 }
-.login-container .wx-login-img.data-v-7c1a931a {
+.login-container .wx-login-button.data-v-7c1a931a {
   margin-top: 200rpx;
+  width: 568rpx;
+  height: 98rpx;
+  padding: 0;
+  border: none;
+}
+.login-container .wx-login-img.data-v-7c1a931a {
   width: 568rpx;
   height: 98rpx;
 }
@@ -36,7 +42,7 @@
   color: #A8A8A8;
   font-size: 20rpx;
   position: absolute;
-  bottom: 30rpx;
+  bottom: 40rpx;
 }
 .wx-login-container.data-v-7c1a931a {
   position: relative;

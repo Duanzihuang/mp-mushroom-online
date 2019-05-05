@@ -2,29 +2,13 @@
   <view style="height:100%;" class="_div data-v-7c1a931a">
     <view wx:if="{{!isWxLogin}}" class="_div data-v-7c1a931a login-container">
       <image class="_img data-v-7c1a931a logo" src="/static/images/logo@2x.png" alt></image>
-      <view class="_p data-v-7c1a931a title">酷丁鱼在线课堂</view>
-      <image class="_img data-v-7c1a931a login-tips" src="/static/images/login_tips@2x.png" alt></image>
-      <image bindtap="handleProxy" class="_img data-v-7c1a931a wx-login-img" src="/static/images/wx_login@2x.png" alt data-eventid="{{'0'}}" data-comkey="{{$k}}"></image>
+      <view class="_p data-v-7c1a931a title">蘑菇在线</view>
+      <image class="_img data-v-7c1a931a login-tips" src="/static/images/login_tips@2x.png" alt></image> <button open-type="getUserInfo" bindgetuserinfo="handleProxy" plain class="_button data-v-7c1a931a wx-login-button" data-eventid="{{'0'}}" data-comkey="{{$k}}">
+        <image class="_img data-v-7c1a931a wx-login-img" src="/static/images/wx_login@2x.png" alt></image>
+      </button>
       <view bindtap="handleProxy" class="_p data-v-7c1a931a phone-login" data-eventid="{{'1'}}" data-comkey="{{$k}}">手机号登录</view>
-      <view class="_p data-v-7c1a931a bottom-tip">Copyright © 2019 酷丁鱼在线课堂 </view>
+      <view class="_p data-v-7c1a931a bottom-tip">Copyright © 2019 蘑菇在线 </view>
     </view>
-    <view class="_div data-v-7c1a931a wx-login-container" wx:elif="{{isWxLogin}}">
-      <view class="_div data-v-7c1a931a wx-login-tip1">
-        <image src="/static/images/auth_tips@2x.png" alt class="_img data-v-7c1a931a"></image>
-        <view class="_p data-v-7c1a931a">需要您的授权后才能继续进行使用</view>
-      </view>
-      <view class="_div data-v-7c1a931a wx-login-tip1-cover"></view>
-      <view class="_div data-v-7c1a931a wx-login-tip2">
-        <view class="_div data-v-7c1a931a head">
-          <image class="_img data-v-7c1a931a head-img" src="/static/images/mushroom_logo@2x.png" alt></image> <label class="_span data-v-7c1a931a">蘑菇在线 申请</label>
-        </view>
-        <view class="_div data-v-7c1a931a body1"> 获取你的昵称、头像、地区及性别 </view>
-        <view class="_div data-v-7c1a931a body2">
-          <image src="/static/images/auto_logo@2x.png" alt class="_img data-v-7c1a931a"></image>
-          <view class="_div data-v-7c1a931a"><label class="_span data-v-7c1a931a">酷小鱼</label> <label class="_span data-v-7c1a931a">微信个人信息</label></view>
-        </view>
-        <view class="_div data-v-7c1a931a footer"><button bindtap="handleProxy" data-eventid="{{'2'}}" data-comkey="{{$k}}" class="_button data-v-7c1a931a">取消</button> <button open-type="getUserInfo" bindgetuserinfo="handleProxy" data-eventid="{{'3'}}" data-comkey="{{$k}}" class="_button data-v-7c1a931a">允许</button></view>
-      </view>
-    </view>
+    <view class="_div data-v-7c1a931a wx-login-container" wx:elif="{{isWxLogin}}"></view>
   </view>
 </template>
