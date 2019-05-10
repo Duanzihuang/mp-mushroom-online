@@ -238,6 +238,6 @@
   float: right;
   margin-right: 20rpx;
 }
-.course-detail-container .catalog .star ._img.data-v-df5f8466:nth-child(1) {
+.course-detail-container .catalog .star ._img.data-v-df5f8466:nth-child(0) {
   margin-right: 20rpx;
 }

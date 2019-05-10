@@ -62,8 +62,8 @@
               <view class="_p data-v-df5f8466"></view>
             </view>
             <view class="_div data-v-df5f8466 star">
-              <image src="/static/images/thumbs-up@2x.png" alt class="_img data-v-df5f8466"></image>
               <image src="/static/images/comment@2x.png" alt class="_img data-v-df5f8466"></image>
+              <image bindtap="handleProxy" src="/static/images/thumbs-up@2x.png" alt data-eventid="{{'3_'+index}}" data-comkey="{{$k}}" class="_img data-v-df5f8466"></image>
             </view>
           </view>
           <view style="color:#636363;font-size:15px;padding:38rpx;" wx:if="{{!course_detail.comments}}" class="_p data-v-df5f8466"> 暂无评论哦，请学习之后再评价~ </view>

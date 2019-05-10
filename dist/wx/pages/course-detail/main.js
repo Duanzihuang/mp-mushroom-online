@@ -196,7 +196,7 @@ if (false) {(function () {
       course_id: null, //课程id
       course_detail: null, // 课程详情数据
       isPlaying: false, //是否正在播放视频
-      menus: ['目录', '讲师介绍', '评价(2541)'],
+      menus: ['目录', '讲师介绍', '评价'],
       selectIndex: 0 // 选中的索引
     };
   },
@@ -227,8 +227,10 @@ if (false) {(function () {
 
 
                 _this.course_detail = res.data.message;
+                // 设置评论总数
+                _this.menus[2] = '\u8BC4\u4EF7(' + res.data.message.commentTotal + ')';
 
-              case 4:
+              case 5:
               case 'end':
                 return _context.stop();
             }
@@ -242,6 +244,11 @@ if (false) {(function () {
       this.isPlaying = true;
       var videoContent = wx.createVideoContext('courseVideoId');
       videoContent.play();
+    },
+
+    // 点赞
+    thumbsUp: function thumbsUp(comment_id) {
+      console.log(comment_id);
     },
 
     // 去看视频学习
@@ -385,7 +392,25 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       }
     })], 1)]), _vm._v(" "), _c('div', [_vm._v("\n                " + _vm._s(item.content) + "\n              ")])]), _vm._v(" "), _c('p', {
       staticClass: "time"
-    }, [_vm._v("1小时前")]), _c('p')], 1), _vm._v(" "), _vm._m(1, true)])
+    }, [_vm._v("1小时前")]), _c('p')], 1), _vm._v(" "), _c('div', {
+      staticClass: "star"
+    }, [_c('img', {
+      attrs: {
+        "src": "/static/images/comment@2x.png",
+        "alt": ""
+      }
+    }), _vm._v(" "), _c('img', {
+      attrs: {
+        "src": "/static/images/thumbs-up@2x.png",
+        "alt": "",
+        "eventid": '3_' + index
+      },
+      on: {
+        "click": function($event) {
+          _vm.thumbsUp(item.id)
+        }
+      }
+    })])])
   }), _vm._v(" "), (!_vm.course_detail.comments) ? _c('p', {
     staticStyle: {
       "color": "#636363",
@@ -400,20 +425,6 @@ var staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _
   }, [_c('img', {
     attrs: {
       "src": "/static/images/share@2x.png",
-      "alt": ""
-    }
-  })])
-},function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "star"
-  }, [_c('img', {
-    attrs: {
-      "src": "/static/images/thumbs-up@2x.png",
-      "alt": ""
-    }
-  }), _vm._v(" "), _c('img', {
-    attrs: {
-      "src": "/static/images/comment@2x.png",
       "alt": ""
     }
   })])

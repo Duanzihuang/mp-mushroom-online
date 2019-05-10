@@ -79,8 +79,8 @@
               <p class="time">1小时前<p/>
             </div>
             <div class="star">
-              <img src="/static/images/thumbs-up@2x.png" alt="">
-              <img src="/static/images/comment@2x.png" alt="">
+              <!-- <img src="/static/images/comment@2x.png" alt=""> -->
+              <img @click="like(item)" :src="item.is_like == 1 ? '/static/images/like_normal@2x.png' : '/static/images/like_highlight@2x.png'" alt="">
             </div>
           </div>
           <p style="color:#636363;font-size:15px;padding:38rpx;" v-if="!course_detail.comments">
@@ -104,7 +104,7 @@ export default {
       course_id:null, //课程id
       course_detail:null, // 课程详情数据
       isPlaying:false, //是否正在播放视频
-      menus:['目录','讲师介绍','评价(2541)'],
+      menus:['目录','讲师介绍','评价'],
       selectIndex:0 // 选中的索引
     }
   },
@@ -121,12 +121,34 @@ export default {
       const res = await this.$axios.get(`course/${id}`)
 
       this.course_detail = res.data.message
+      // 设置评论总数
+      this.menus[2] = `评价(${res.data.message.commentTotal})`
     },
     // 播放课程简介视频
     playCourseVideo(){
       this.isPlaying = true
       const videoContent = wx.createVideoContext('courseVideoId')
       videoContent.play()
+    },
+    // 点赞
+    async like(comment){
+      switch (comment.is_like) {
+        case 1:
+          comment.is_like = 2
+          break;
+
+        case 2:
+          comment.is_like = 1
+          break;
+
+        default:
+          break;
+      }
+
+      const res = await this.$axios.post('/comment/like',{
+        comment_id: comment.id,
+        is_like: comment.is_like
+      })
     },
     // 去看视频学习
     goToStudy(){
@@ -382,7 +404,7 @@ export default {
         float: right;
         margin-right: 20rpx;
       }
-      img:nth-child(1){
+      img:nth-child(0){
         margin-right: 20rpx;
       }
     }
