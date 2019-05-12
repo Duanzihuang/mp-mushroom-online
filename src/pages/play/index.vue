@@ -13,7 +13,7 @@
         <p class="info">
           <span>{{course_detail.course.study_count}}人学过</span>
           <span>难度:{{level}}人学过</span>
-          <span>时长:{{course_detail.course.class_hour}}</span>
+          <span>时长:{{course_detail.course.course_duration}}</span>
         </p>
       </div>
       <div class="comment">
@@ -24,7 +24,7 @@
     <div class="course-progress">
       <div class="title">课程进度</div>
       <div class="catelog-container">
-          <p @click="playOneVideo(item.video_url,index)" v-for="(item,index) in course_detail.videos" :key="item.id">
+          <p @click="playOneVideo(item,index)" v-for="(item,index) in course_detail.videos" :key="item.id">
             <span :class="{'active' : index === playIndex}">{{index+1}}.{{item.name}}</span>
             <span v-if="item.is_study == 1" class="studied">已学习</span>
             <span v-else :class="['time',index === playIndex ? 'active' : '']">{{item.duration}}</span>
@@ -93,7 +93,7 @@ export default {
       this.video_url = this.course_detail.videos[0].video_url
     },
     // 播放某一条视频
-    async playOneVideo(video_url,currentIndex){
+    async playOneVideo(item,currentIndex){
       // 设置正在播放的索引
       this.playIndex = currentIndex
 
@@ -102,11 +102,22 @@ export default {
 
       const videoContext = wx.createVideoContext('myVideo')
 
-      this.video_url = video_url
+      this.video_url = item.video_url
       // 播放当前选中的
       setTimeout(() => {
         videoContext.play()
-      }, 200);
+      }, 200)
+
+      // 记录学习进度
+      const res = await this.$axios.post('/study/video',{
+        course_id: this.course_id,
+        video_id:item.id
+      })
+
+      if (res.data.status === 0){
+        console.log("111111")
+        item.is_study = 1
+      }
     },
     // 当视频播放的时候
     onVideoPlay(){

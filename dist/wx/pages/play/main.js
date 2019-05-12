@@ -212,11 +212,11 @@ if (false) {(function () {
     },
 
     // 播放某一条视频
-    playOneVideo: function playOneVideo(video_url, currentIndex) {
+    playOneVideo: function playOneVideo(item, currentIndex) {
       var _this2 = this;
 
       return __WEBPACK_IMPORTED_MODULE_2_babel_runtime_helpers_asyncToGenerator___default()( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_1_babel_runtime_regenerator___default.a.mark(function _callee2() {
-        var isCanPlay, videoContext;
+        var isCanPlay, videoContext, res;
         return __WEBPACK_IMPORTED_MODULE_1_babel_runtime_regenerator___default.a.wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
@@ -241,13 +241,29 @@ if (false) {(function () {
                 videoContext = wx.createVideoContext('myVideo');
 
 
-                _this2.video_url = video_url;
+                _this2.video_url = item.video_url;
                 // 播放当前选中的
                 setTimeout(function () {
                   videoContext.play();
                 }, 200);
 
-              case 9:
+                // 记录学习进度
+                _context2.next = 11;
+                return _this2.$axios.post('/study/video', {
+                  course_id: _this2.course_id,
+                  video_id: item.id
+                });
+
+              case 11:
+                res = _context2.sent;
+
+
+                if (res.data.status === 0) {
+                  console.log("111111");
+                  item.is_study = 1;
+                }
+
+              case 13:
               case "end":
                 return _context2.stop();
             }
@@ -349,7 +365,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     staticClass: "title"
   }, [_vm._v(_vm._s(_vm.course_detail.course.title))]), _vm._v(" "), _c('p', {
     staticClass: "info"
-  }, [_c('span', [_vm._v(_vm._s(_vm.course_detail.course.study_count) + "人学过")]), _vm._v(" "), _c('span', [_vm._v("难度:" + _vm._s(_vm.level) + "人学过")]), _vm._v(" "), _c('span', [_vm._v("时长:" + _vm._s(_vm.course_detail.course.class_hour))])])], 1), _vm._v(" "), _vm._m(0)]), _vm._v(" "), _c('div', {
+  }, [_c('span', [_vm._v(_vm._s(_vm.course_detail.course.study_count) + "人学过")]), _vm._v(" "), _c('span', [_vm._v("难度:" + _vm._s(_vm.level) + "人学过")]), _vm._v(" "), _c('span', [_vm._v("时长:" + _vm._s(_vm.course_detail.course.course_duration))])])], 1), _vm._v(" "), _vm._m(0)]), _vm._v(" "), _c('div', {
     staticClass: "course-progress"
   }, [_c('div', {
     staticClass: "title"
@@ -363,7 +379,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       },
       on: {
         "click": function($event) {
-          _vm.playOneVideo(item.video_url, index)
+          _vm.playOneVideo(item, index)
         }
       }
     }, [_c('span', {

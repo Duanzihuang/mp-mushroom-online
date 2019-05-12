@@ -116,10 +116,11 @@ if (false) {(function () {
   },
   data: function data() {
     return {
+      isEmpty: false, //是否为空【是否有学习记录】
       studyProgresses: []
     };
   },
-  onLoad: function onLoad() {
+  onShow: function onShow() {
     // 获取学习进度数据
     this.getStudyProgressData();
   },
@@ -141,9 +142,11 @@ if (false) {(function () {
                 res = _context.sent;
 
 
+                _this.isEmpty = res.data.message.length === 0;
+
                 _this.studyProgresses = res.data.message;
 
-              case 4:
+              case 5:
               case 'end':
                 return _context.stop();
             }
@@ -362,7 +365,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       staticClass: "title"
     }, [_vm._v(_vm._s(item.title))]), _vm._v(" "), _c('p', {
       staticClass: "progress"
-    }, [_vm._v("已学习" + _vm._s(item.study_hour) + "课时/" + _vm._s(item.class_hour) + "课时")])], 1), _vm._v(" "), _c('div', {
+    }, [_vm._v("已学习" + _vm._s(item.study_hour) + "课时/" + _vm._s(item.total_hour || 0) + "课时")])], 1), _vm._v(" "), _c('div', {
       staticClass: "circle"
     }, [_c('dzh-mp-circle', {
       attrs: {
@@ -373,7 +376,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
         "mpcomid": '0_' + index
       }
     })], 1)])
-  }), _vm._v(" "), (_vm.studyProgresses.length === 0) ? _c('div', [_c('p', {
+  }), _vm._v(" "), (_vm.isEmpty) ? _c('div', [_c('p', {
     staticClass: "no-study-tip"
   }, [_vm._v("您还没有任何学习记录哦，赶快去学习吧~")])], 1) : _vm._e()], 2)
 }

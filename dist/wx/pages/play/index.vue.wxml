@@ -4,7 +4,7 @@
     <view class="_div data-v-2b7c9040 introduction">
       <view class="_div data-v-2b7c9040 title-and-info">
         <view class="_p data-v-2b7c9040 title">{{course_detail.course.title}}</view>
-        <view class="_p data-v-2b7c9040 info"><label class="_span data-v-2b7c9040">{{course_detail.course.study_count}}人学过</label> <label class="_span data-v-2b7c9040">难度:{{level}}人学过</label> <label class="_span data-v-2b7c9040">时长:{{course_detail.course.class_hour}}</label></view>
+        <view class="_p data-v-2b7c9040 info"><label class="_span data-v-2b7c9040">{{course_detail.course.study_count}}人学过</label> <label class="_span data-v-2b7c9040">难度:{{level}}人学过</label> <label class="_span data-v-2b7c9040">时长:{{course_detail.course.course_duration}}</label></view>
       </view>
       <view class="_div data-v-2b7c9040 comment">
         <image src="/static/images/evaluate@2x.png" alt class="_img data-v-2b7c9040"></image>

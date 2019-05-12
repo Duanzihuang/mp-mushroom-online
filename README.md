@@ -6,5 +6,5 @@
 
 1. mpvue
 2. axios
-3. vue-circle-xprogress
+3. canvas
 

@@ -4,13 +4,13 @@
       <img :src="item.icon" alt="">
       <div class="meta">
         <p class="title">{{item.title}}</p>
-        <p class="progress">已学习{{item.study_hour}}课时/{{item.class_hour}}课时</p>
+        <p class="progress">已学习{{item.study_hour}}课时/{{item.total_hour || 0}}课时</p>
       </div>
       <div class="circle">
         <dzh-mp-circle :canvasId="item.sid" :progress="item.study_progress" :width="55" :height="55"></dzh-mp-circle>
       </div>
     </div>
-    <div v-if="studyProgresses.length === 0">
+    <div v-if="isEmpty">
       <p class="no-study-tip">您还没有任何学习记录哦，赶快去学习吧~</p>
     </div>
   </div>
@@ -24,16 +24,19 @@ export default {
   },
   data(){
     return {
+      isEmpty:false, //是否为空【是否有学习记录】
       studyProgresses:[]
     }
   },
-  onLoad(){
+  onShow(){
     // 获取学习进度数据
     this.getStudyProgressData()
   },
   methods:{
     async getStudyProgressData(){
       const res = await this.$axios.get('study/progress')
+
+      this.isEmpty = res.data.message.length  === 0
 
       this.studyProgresses = res.data.message
     }

@@ -247,8 +247,47 @@ if (false) {(function () {
     },
 
     // 点赞
-    thumbsUp: function thumbsUp(comment_id) {
-      console.log(comment_id);
+    like: function like(comment) {
+      var _this2 = this;
+
+      return __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_asyncToGenerator___default()( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee2() {
+        var res;
+        return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.t0 = comment.is_like;
+                _context2.next = _context2.t0 === 1 ? 3 : _context2.t0 === 2 ? 5 : 7;
+                break;
+
+              case 3:
+                comment.is_like = 2;
+                return _context2.abrupt('break', 8);
+
+              case 5:
+                comment.is_like = 1;
+                return _context2.abrupt('break', 8);
+
+              case 7:
+                return _context2.abrupt('break', 8);
+
+              case 8:
+                _context2.next = 10;
+                return _this2.$axios.post('/comment/like', {
+                  comment_id: comment.id,
+                  is_like: comment.is_like
+                });
+
+              case 10:
+                res = _context2.sent;
+
+              case 11:
+              case 'end':
+                return _context2.stop();
+            }
+          }
+        }, _callee2, _this2);
+      }))();
     },
 
     // 去看视频学习
@@ -396,18 +435,13 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       staticClass: "star"
     }, [_c('img', {
       attrs: {
-        "src": "/static/images/comment@2x.png",
-        "alt": ""
-      }
-    }), _vm._v(" "), _c('img', {
-      attrs: {
-        "src": "/static/images/thumbs-up@2x.png",
+        "src": item.is_like == 1 ? '/static/images/like_normal@2x.png' : '/static/images/like_highlight@2x.png',
         "alt": "",
         "eventid": '3_' + index
       },
       on: {
         "click": function($event) {
-          _vm.thumbsUp(item.id)
+          _vm.like(item)
         }
       }
     })])])
