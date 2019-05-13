@@ -38,7 +38,7 @@ axios.defaults.adapter = function(config) {
     });
     mpvue.request({
       url: config.url, //开发者服务器接口地址",
-      data: config.data, //请求的参数",
+      data: config.data || config.params, //请求的参数",
       method: config.method,
       // todo header
       header: config.headers,

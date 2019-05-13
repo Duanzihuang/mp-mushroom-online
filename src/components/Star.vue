@@ -1,10 +1,10 @@
 <template>
-  <div>
+  <div class="container">
     <div class="star-bg">
-      <img v-for="item in 5" :key="item" src="/static/images/star_empty@2x.png" alt="">
+      <img @click="star(index)" v-for="(item,index) in 5" :key="item" src="/static/images/star_empty@2x.png" alt="">
     </div>
     <div class="star">
-      <img v-for="item in score" :key="item" src="/static/images/star_fill@2x.png" alt="">
+      <img @click="star(index)" v-for="(item,index) in score" :key="item" src="/static/images/star_fill@2x.png" alt="">
     </div>
   </div>
 </template>
@@ -13,14 +13,33 @@
 export default {
   props:{
     score:{
-      type:Number
+      type:Number,
+      default:5
+    },
+    readonly:{
+      type:Boolean,
+      default:true
+    }
+  },
+  methods:{
+    star(index){
+      if (this.readonly) return
+
+      this.score = index + 1
+
+      // 传递选择的分数给父组件
+      this.$emit('changeScore',this.score)
     }
   }
 }
 </script>
 
 <style lang="less" scoped>
+.container{
+  position: relative;
+}
 .star,.star-bg{
+  float: left;
   display: flex;
   height: 50rpx;
   align-items: center;
@@ -31,7 +50,8 @@ export default {
 }
 .star{
   position: absolute;
-  margin-top:-50rpx;
+  top:0;
+  left:0;
 }
 </style>
 

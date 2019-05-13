@@ -69,7 +69,7 @@
               <img :src="item.avatar" alt="">
               <div class="nickname-content">
                 <div class="nickname">
-                  <div>{{item.nickname}}</div>&nbsp;
+                  <div style="margin-top:12rpx;">{{item.nickname}}</div>&nbsp;&nbsp;
                   <div><star :score="item.score"/></div>
                 </div>
                 <div>
@@ -110,15 +110,18 @@ export default {
   },
   onLoad(options){
     this.course_id = options.id
-    this.getCourseDetailData(options.id)
+    this.getCourseDetailData()
+  },
+  onShow(){
+    this.getCourseDetailData()
   },
   onUnload(){
     this.isPlaying = false
     this.selectIndex = 0
   },
   methods:{
-    async getCourseDetailData(id){
-      const res = await this.$axios.get(`course/${id}`)
+    async getCourseDetailData(){
+      const res = await this.$axios.get(`course/${this.course_id}`)
 
       this.course_detail = res.data.message
       // 设置评论总数
@@ -380,12 +383,15 @@ export default {
             color:#333333;
             font-size: 15px;
             font-weight: bold;
+            align-items: center;
+            display: flex;
             div{
+              height: 100%;
               display: inline-block;
             }
           }
           div:nth-child(2){
-            margin-top:10rpx;
+            margin-top:16rpx;
             color:#A8A8A8;
             font-size: 12px;
           }

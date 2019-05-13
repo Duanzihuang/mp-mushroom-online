@@ -12,13 +12,24 @@
         <p class="title">{{course_detail.course.title}}</p>
         <p class="info">
           <span>{{course_detail.course.study_count}}人学过</span>
-          <span>难度:{{level}}人学过</span>
+          <span>难度:{{level}}</span>
           <span>时长:{{course_detail.course.course_duration}}</span>
         </p>
       </div>
       <div class="comment">
-        <img src="/static/images/evaluate@2x.png" alt="">
+        <img @click="evaluate" src="/static/images/evaluate@2x.png" alt="">
       </div>
+      <Modal @postComment="postComment" :visible="isShowCommentModal" @close="closeModal">
+        <div class="comment-content">
+          <textarea v-model="content" placeholder="请输入评论内容哦~" rows="5"></textarea>
+        </div>
+        <div style="margin-top:10rpx;">
+          <span>评分：</span>
+          <div style="float:right;margin-right:300rpx;margin-top:-5rpx;">
+            <Star @changeScore="getChangeSocre" :readonly="false"/>
+          </div>
+        </div>
+      </Modal>
     </div>
     <!-- 3.0 课程进度 -->
     <div class="course-progress">
@@ -37,9 +48,11 @@
 <script>
 // 导入子组件
 import Star from '../../components/Star'
+import Modal from '../../components/Modal'
 export default {
   components:{
-    Star
+    Star,
+    Modal
   },
   data(){
     return {
@@ -49,7 +62,10 @@ export default {
       video_url:null,
       course_detail:null, // 课程详情数据
       playIndex:0, // 正在播放视频的索引
-      isValidateRight:false // 是否校验过权限
+      isValidateRight:false, // 是否校验过权限
+      isShowCommentModal:false, // 是否显示评论框
+      score:0, // 评论的分数
+      content:'',// 评论的内容
     }
   },
   computed: {
@@ -155,6 +171,53 @@ export default {
             resolve(true)
           })
         }
+    },
+    // 评价
+    async evaluate(){
+      // 查询是否学习完毕了该课程，如果是则弹出评论对话框，如果不是，则提示
+      const res = await this.$axios.get('/study/complete',{
+        params:{
+          course_id:this.course_id
+        }
+      })
+
+      if (res.data.complete){ // 学习完毕了
+        this.isShowCommentModal = true
+      } else {
+        wx.showModal({
+          title: '评论失败', //提示的标题,
+          content: '需要学习完课程内容才能评价哦~', //提示的内容,
+          showCancel: false, //是否显示取消按钮,
+          confirmText: '确定', //确定按钮的文字，默认为取消，最多 4 个字符,
+          confirmColor: '#ff8d44', //确定按钮的文字颜色
+        })
+      }
+    },
+    // 关闭模态框
+    closeModal(){
+      this.isShowCommentModal = false
+    },
+    // 获取选中的评论分数
+    getChangeSocre(score){
+      this.score = score
+    },
+    // 提交评论
+    async postComment(){
+      const res = await this.$axios.post('/comment/create',{
+        course_id: this.course_id,
+        content: this.content,
+        score: this.score
+      })
+
+      if (res.data.status === 0){
+        this.closeModal()
+        wx.showToast({
+          title: '评价成功', //提示的内容,
+          icon: 'success', //图标,
+          duration: 2000, //延迟时间,
+          mask: true, //显示透明蒙层，防止触摸穿透
+        });
+      }
     }
   }
 }
@@ -276,6 +339,14 @@ export default {
         color:#FF5E00;
       }
     }
+  }
+}
+.comment-content{
+  label{
+    width:100rpx;
+  }
+  textarea{
+    height: 200rpx;
   }
 }
 </style>
