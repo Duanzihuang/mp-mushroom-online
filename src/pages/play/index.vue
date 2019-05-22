@@ -131,7 +131,6 @@ export default {
       })
 
       if (res.data.status === 0){
-        console.log("111111")
         item.is_study = 1
       }
     },
@@ -323,6 +322,7 @@ export default {
       }
       .studied{
         float:right;
+        margin-top:16rpx;
         font-size:10px;
         text-align: center;
         color:#AAAAAA;

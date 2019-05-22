@@ -26,9 +26,7 @@
       </div>
       <div class="study-share">
         <img @click="goToStudy" src="/static/images/start_study@2x.png" alt="">
-        <div class="share-button">
-          <img src="/static/images/share@2x.png" alt="">
-        </div>
+        <button open-type='share' class="share-button" plain></button>
       </div>
     </div>
     <!-- 3.0 目录、讲师介绍、评价 -->
@@ -52,8 +50,8 @@
               <p>{{course_detail.lecturer.name}}</p>
               <p>关注人数{{course_detail.lecturer.follow_count}}</p>
             </div>
-            <p class="follow">
-              关注
+            <p @click="followOrUnFollow(course_detail.lecturer.is_follow,course_detail.lecturer.id)" :class="[course_detail.lecturer.is_follow === 1 ? 'follow' : 'unfollow']">
+              {{course_detail.lecturer.is_follow === 1 ? '已关注' : '关注'}}
             </p>
           </div>
           <div v-if="course_detail.lecturer" class="introduce">
@@ -112,12 +110,16 @@ export default {
     this.course_id = options.id
     this.getCourseDetailData()
   },
-  onShow(){
-    this.getCourseDetailData()
-  },
+  // onShow(){
+  //   this.getCourseDetailData()
+  // },
   onUnload(){
     this.isPlaying = false
     this.selectIndex = 0
+  },
+  // 分享
+  onShareAppMessage(options){
+
   },
   methods:{
     async getCourseDetailData(){
@@ -152,6 +154,43 @@ export default {
         comment_id: comment.id,
         is_like: comment.is_like
       })
+    },
+    // 关注或是取消关注
+    async followOrUnFollow(is_follow,lecturer_id){
+      switch (is_follow) {
+        case 0: // 去关注
+          const res1 = await this.$axios.post('/lecturer/follow',{
+            lecturer_id
+          })
+          if (res1.data.status === 0){
+            this.course_detail.lecturer.is_follow = 1
+            wx.showToast({
+              title: res1.data.message, //提示的内容,
+              icon: 'none', //图标,
+              duration: 2000, //延迟时间,
+              mask: true, //显示透明蒙层，防止触摸穿透
+            })
+          }
+          break;
+
+        case 1: // 取消关注
+          const res2 = await this.$axios.post('/lecturer/unfollow',{
+            lecturer_id
+          })
+          if (res2.data.status === 0){
+            this.course_detail.lecturer.is_follow = 0
+            wx.showToast({
+              title: res2.data.message, //提示的内容,
+              icon: 'none', //图标,
+              duration: 2000, //延迟时间,
+              mask: true, //显示透明蒙层，防止触摸穿透
+            })
+          }
+          break;
+
+        default:
+          break;
+      }
     },
     // 去看视频学习
     goToStudy(){
@@ -253,6 +292,7 @@ export default {
         height: 92rpx;
       }
       .share-button{
+        border:none;
         width: 92rpx;
         height: 92rpx;
         background-color: #fff;
@@ -261,10 +301,10 @@ export default {
         justify-content: center;
         align-items: center;
         float: right;
-        img{
-          width:34rpx;
-          height: 34rpx;
-        }
+        background-image:url(../../../static/images/share@2x.png);
+        background-repeat: no-repeat;
+        background-size: 34rpx 34rpx;
+        background-position: 30rpx 30rpx;
       }
     }
   }
@@ -339,7 +379,7 @@ export default {
           width:120rpx;
           height: 120rpx;
         }
-        .follow{
+        .unfollow{
           width:136rpx;
           height: 52rpx;
           line-height: 52rpx;
@@ -347,6 +387,17 @@ export default {
           border: 1px solid #A8A8A8;
           border-radius: 26rpx;
           color:#A8A8A8;
+          font-size: 14px;
+        }
+        .follow{
+           width:136rpx;
+          height: 52rpx;
+          line-height: 52rpx;
+          text-align: center;
+          border: 1px solid #A8A8A8;
+          border-radius: 26rpx;
+          color:#fff;
+          background-color: #A8A8A8;
           font-size: 14px;
         }
       }

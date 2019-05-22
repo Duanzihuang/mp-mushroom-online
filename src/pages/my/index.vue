@@ -10,7 +10,7 @@
         <p class="subtitle">累计学习小时</p>
       </div>
       <div class="middle">
-        <p class="title">{{userInfo.study_hour}}</p>
+        <p class="title">{{userInfo.follow_count}}</p>
         <p class="subtitle">我的关注</p>
       </div>
       <div class="right">
@@ -27,15 +27,15 @@
         <p>消息提醒</p>
         <img src="/static/images/arrow@2x.png" alt="">
       </div>
-      <div class="cell">
-        <p>清楚缓存</p>
+      <div @click="clearCache" class="cell">
+        <p>清除缓存</p>
         <img src="/static/images/arrow@2x.png" alt="">
       </div>
       <div class="cell">
         <p>商务合作</p>
         <img src="/static/images/arrow@2x.png" alt="">
       </div>
-      <div class="cell">
+      <div @click="contact" class="cell">
         <p>在线客服</p>
         <img src="/static/images/arrow@2x.png" alt="">
       </div>
@@ -50,7 +50,7 @@ export default {
       userInfo: null
     }
   },
-  onLoad(){
+  onShow(){
     this.getUserInfoData()
   },
   methods:{
@@ -58,6 +58,31 @@ export default {
       const res = await this.$axios.get('my/info')
 
       this.userInfo = res.data.message
+    },
+    // 清除缓存
+    clearCache(){
+      wx.showToast({
+        title: '缓存清理中...', //提示的内容,
+        icon: 'loading', //图标,
+        duration: 2000, //延迟时间,
+        mask: true, //显示透明蒙层，防止触摸穿透,
+        success: res => {
+          setTimeout(() => {
+            wx.showToast({
+              title: '清理缓存成功', //提示的内容,
+              icon: 'success', //图标,
+              duration: 1000, //延迟时间,
+              mask: true //显示透明蒙层，防止触摸穿透
+            });
+          }, 2000)
+        }
+      })
+    },
+    // 联系客服
+    contact(){
+      wx.makePhoneCall({
+        phoneNumber: '400-618-9090'
+      })
     }
   }
 }
