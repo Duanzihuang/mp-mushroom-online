@@ -36,42 +36,55 @@ export default {
       default:100
     }
   },
+  updated() {
+    this.drawProgress()
+  },
   onReady(){
-    if (this.progress <= 30){
-      this.foregroundColor = '#ff0000'
-    } else if (this.progress > 30 && this.progress < 50){
-      this.foregroundColor = '#FF783B'
-    } else {
-      this.foregroundColor = '#B4D66E'
+    this.drawProgress()
+  },
+  methods:{
+    // 绘制进度
+    drawProgress(){
+      if (this.progress <= 30){
+        this.foregroundColor = '#ff0000'
+      } else if (this.progress > 30 && this.progress < 50){
+        this.foregroundColor = '#FF783B'
+      } else {
+        this.foregroundColor = '#B4D66E'
+      }
+
+      // 背景色
+      const backgroundCtx = wx.createCanvasContext('backgroundCanvas'+this.canvasId)
+      // 前景色
+      const foregroundCtx = wx.createCanvasContext('foregroundCanvas'+this.canvasId)
+
+      // 绘制背景色
+      backgroundCtx.setStrokeStyle(this.backgroundColor)
+      backgroundCtx.setLineWidth(this.lineWidth)
+      // 绘制圆
+      backgroundCtx.arc(this.width/2 + this.lineWidth / 2, this.height/2 + this.lineWidth / 2, this.width/2 - this.lineWidth, 0, 2 * Math.PI, true)
+      backgroundCtx.stroke()
+
+      // 绘制前景色
+      foregroundCtx.setStrokeStyle(this.foregroundColor)
+      foregroundCtx.setLineWidth(this.lineWidth)
+      foregroundCtx.setLineCap('round')
+      foregroundCtx.arc(this.width/2 + this.lineWidth / 2, this.height/2 + this.lineWidth / 2, this.width/2 - this.lineWidth, -0.5 * Math.PI, (this.progress / 100) * 2 * Math.PI -0.5 * Math.PI, false)
+      foregroundCtx.stroke()
+
+      // 绘制文字
+      foregroundCtx.setFillStyle(this.foregroundColor)
+      foregroundCtx.setFontSize(12)
+      if (this.progress >= 99){
+        foregroundCtx.fillText(parseInt(this.progress)+'%',this.width / 2 - 13,this.height / 2 + 6)
+      } else {
+        foregroundCtx.fillText(parseInt(this.progress)+'%',this.width / 2 - 10,this.height / 2 + 6)
+      }
+
+      // 绘制
+      backgroundCtx.draw()
+      foregroundCtx.draw()
     }
-
-    // 背景色
-    const backgroundCtx = wx.createCanvasContext('backgroundCanvas'+this.canvasId)
-    // 前景色
-    const foregroundCtx = wx.createCanvasContext('foregroundCanvas'+this.canvasId)
-
-    // 绘制背景色
-    backgroundCtx.setStrokeStyle(this.backgroundColor)
-    backgroundCtx.setLineWidth(this.lineWidth)
-    // 绘制圆
-    backgroundCtx.arc(this.width/2 + this.lineWidth / 2, this.height/2 + this.lineWidth / 2, this.width/2 - this.lineWidth, 0, 2 * Math.PI, true)
-    backgroundCtx.stroke()
-
-    // 绘制前景色
-    foregroundCtx.setStrokeStyle(this.foregroundColor)
-    foregroundCtx.setLineWidth(this.lineWidth)
-    foregroundCtx.setLineCap('round')
-    foregroundCtx.arc(this.width/2 + this.lineWidth / 2, this.height/2 + this.lineWidth / 2, this.width/2 - this.lineWidth, -0.5 * Math.PI, (this.progress / 100) * 2 * Math.PI -0.5 * Math.PI, false)
-    foregroundCtx.stroke()
-
-    // 绘制文字
-    foregroundCtx.setFillStyle(this.foregroundColor)
-    foregroundCtx.setFontSize(12)
-    foregroundCtx.fillText(parseInt(this.progress)+'%',this.width / 2 - 10,this.height / 2 + 6)
-
-    // 绘制
-    backgroundCtx.draw()
-    foregroundCtx.draw()
   }
 }
 </script>
