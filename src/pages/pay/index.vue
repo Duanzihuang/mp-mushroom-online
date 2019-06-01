@@ -53,18 +53,21 @@ export default {
   methods:{
     async createOrderAndPay(){
       // 创建订单
-      const res = await this.$axios.post('/order/create',{
+      const res = await this.$axios.post('order/create',{
         course_id:this.course_id,
         price:this.course_price
       })
 
       if (res.data.status === 0){
-        // 支付订单
-        this.payOrder(res.data.order_id)
+        // 模拟支付订单
+        // this.payOrder(res.data.order_id)
+
+        // 微信支付订单
+        this.wxPayOrder(res.data.order_number)
       }
     },
     async payOrder(order_id){
-      const res = await this.$axios.post('/order/pay',{
+      const res = await this.$axios.post('order/pay',{
         order_id
       })
 
@@ -79,10 +82,49 @@ export default {
               wx.navigateBack({
                 delta: 1 // 回退前 delta(默认为1) 页面
               })
-            }, 2000);
+            }, 2000)
           }
         })
       }
+    },
+    async wxPayOrder(order_number){
+      // 获取预付单信息
+      const res = await this.$axios.post('pay/req_unifiedorder',{order_number})
+
+      // 唤起微信微信支付
+      mpvue.requestPayment({
+        timeStamp: res.data.payorder.timeStamp,
+        nonceStr: res.data.payorder.nonceStr,
+        package: res.data.payorder.package,
+        signType: res.data.payorder.signType,
+        paySign: res.data.payorder.paySign,
+        success: async res2 => {
+          const res3 = await this.$axios.post('order/wxpaysuccess',{order_number})
+
+          if (res3.data.status === 0){
+            wx.showToast({
+              title: '支付成功', //提示的内容,
+              icon: 'none', //图标,
+              duration: 2000, //延迟时间,
+              mask: true, //显示透明蒙层，防止触摸穿透
+            })
+
+            setTimeout(() => {
+              wx.navigateBack({
+                delta: 1 // 回退前 delta(默认为1) 页面
+              })
+            }, 2000)
+          }
+        },
+        fail: res => {
+          wx.showToast({
+            title: '支付失败', //提示的内容,
+            icon: 'none', //图标,
+            duration: 2000, //延迟时间,
+            mask: true, //显示透明蒙层，防止触摸穿透
+          })
+        }
+      })
     }
   }
 }
