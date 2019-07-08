@@ -1,31 +1,20 @@
-<template name="55f355a8">
-  <view class="_div data-v-4b3134b2 pay-container">
-    <view class="_div data-v-4b3134b2 order-info">
-      <image src="/static/temp/order@2x.png" alt class="_img data-v-4b3134b2"></image>
-      <view class="_div data-v-4b3134b2 name">
-        <view class="_p data-v-4b3134b2">{{course_title}}</view>
-        <view class="_p data-v-4b3134b2">永久观看</view>
+<import src="/components/Modal.vue.wxml" />
+<import src="/components/Star.vue.wxml" /><template name="55f355a8">
+  <view class="_div data-v-4b3134b2 play-container" wx:if="{{course_detail}}">
+    <view class="_div data-v-4b3134b2 cover_image"><video bindplay="handleProxy" id="myVideo" src="{{video_url}}" controls data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_video data-v-4b3134b2"></video></view>
+    <view class="_div data-v-4b3134b2 introduction">
+      <view class="_div data-v-4b3134b2 title-and-info">
+        <view class="_p data-v-4b3134b2 title">{{course_detail.course.title}}</view>
+        <view class="_p data-v-4b3134b2 info"><label class="_span data-v-4b3134b2">{{course_detail.course.study_count}}人学过</label> <label class="_span data-v-4b3134b2">难度:{{level}}</label> <label class="_span data-v-4b3134b2">时长:{{course_detail.course.course_duration}}</label></view>
       </view>
-      <view class="_p data-v-4b3134b2 price"> ￥{{course_price}}
-      </view>
+      <view class="_div data-v-4b3134b2 comment">
+        <image bindtap="handleProxy" src="/static/images/evaluate@2x.png" alt data-eventid="{{'1'}}" data-comkey="{{$k}}" class="_img data-v-4b3134b2"></image>
+      </view> <template bindpostComment="handleProxy" bindclose="handleProxy" data-eventid="{{'4'}}" data-comkey="{{$k}}" data="{{...$root[$kk+'1'], $root, $for:{default:'data-v-4b3134b2-default-1'},$slotdefault:'data-v-4b3134b2-default-1'}}" is="043551d6"></template>
     </view>
-    <view class="_div data-v-4b3134b2 pay-style">
-      <view class="_div data-v-4b3134b2"> 支付方式 </view>
-      <view class="_div data-v-4b3134b2 wx-pay">
-        <image src="/static/images/wx_pay_logo@2x.png" alt class="_img data-v-4b3134b2"></image>
-        <view class="_div data-v-4b3134b2 name">
-          <view class="_p data-v-4b3134b2">微信支付</view>
-          <view class="_p data-v-4b3134b2">微信安全支付</view>
-        </view>
-        <image class="_img data-v-4b3134b2 select-img" src="/static/images/selected@2x.png" alt></image>
-      </view>
-    </view>
-    <view class="_p data-v-4b3134b2 tip"> 注：该订单不支持退款、提交订单则表示您同意《用户付款协议》 </view>
-    <view class="_div data-v-4b3134b2 bottom">
-      <view class="_div data-v-4b3134b2 content">
-        <view class="_p data-v-4b3134b2">实付金额：</view>
-        <view class="_p data-v-4b3134b2">￥{{course_price}}</view>
-        <image bindtap="handleProxy" class="_img data-v-4b3134b2 pay" src="/static/images/wx_pay@2x.png" alt data-eventid="{{'0'}}" data-comkey="{{$k}}"></image>
+    <view class="_div data-v-4b3134b2 course-progress">
+      <view class="_div data-v-4b3134b2 title">课程进度</view>
+      <view class="_div data-v-4b3134b2 catelog-container">
+        <view bindtap="handleProxy" wx:key="item.id" key="{{item.id}}" data-eventid="{{'5_'+index}}" data-comkey="{{$k}}" wx:for="{{course_detail.videos}}" wx:for-index="index" wx:for-item="item" class="_p data-v-4b3134b2"><label class="_span data-v-4b3134b2 {{[index === playIndex ? 'active' : '']}}">{{index+1}}.{{item.name}}</label> <label wx:if="{{item.is_study == 1}}" class="_span data-v-4b3134b2 studied">已学习</label><label wx:else class="_span data-v-4b3134b2 {{['time', index === playIndex ? 'active' : '']}}">{{item.duration}}</label></view>
       </view>
     </view>
   </view>

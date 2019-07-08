@@ -100,6 +100,7 @@
 }
 .play-container .course-progress .catelog-container .studied.data-v-2b7c9040 {
   float: right;
+  margin-top: 16rpx;
   font-size: 20rpx;
   text-align: center;
   color: #AAAAAA;
@@ -114,4 +115,10 @@
 }
 .play-container .course-progress .catelog-container .active.data-v-2b7c9040 {
   color: #FF5E00;
+}
+.comment-content ._label.data-v-2b7c9040 {
+  width: 100rpx;
+}
+.comment-content ._textarea.data-v-2b7c9040 {
+  height: 200rpx;
 }

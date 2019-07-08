@@ -1,3 +1,8 @@
+<import src="/components/Modal.vue.wxml" />
 <import src="/components/Star.vue.wxml" />
 <import src="/pages/common/SearchBar.vue.wxml" />
+<import src="/components/Star.vue.wxml" />
 <import src="/components/DzhMpCircle.vue.wxml" />
+<template name="data-v-2b7c9040-default-1">
+  <view class="_div data-v-2b7c9040 comment-content"><textarea value="{{content}}" bindinput="handleProxy" placeholder="请输入评论内容哦~" rows="5" data-eventid="{{'2'}}" data-comkey="{{$k}}" class="_textarea data-v-2b7c9040" /></view> <view style="margin-top:10rpx;" class="_div data-v-2b7c9040"><label class="_span data-v-2b7c9040">评分：</label> <view style="float:right;margin-right:300rpx;margin-top:-5rpx;" class="_div data-v-2b7c9040"><template bindchangeScore="handleProxy" data-eventid="{{'3'}}" data-comkey="{{$k}}" data="{{...$root[$kk+'0'], $root}}" is="a58da4cc"></template></view></view></template>
+<template name="data-v-4b3134b2-default-1"><view class="_div data-v-4b3134b2 comment-content"><textarea value="{{content}}" bindinput="handleProxy" placeholder="请输入评论内容哦~" rows="5" data-eventid="{{'2'}}" data-comkey="{{$k}}" class="_textarea data-v-4b3134b2" /></view> <view style="margin-top:10rpx;" class="_div data-v-4b3134b2"><label class="_span data-v-4b3134b2">评分：</label> <view style="float:right;margin-right:300rpx;margin-top:-5rpx;" class="_div data-v-4b3134b2"><template bindchangeScore="handleProxy" data-eventid="{{'3'}}" data-comkey="{{$k}}" data="{{...$root[$kk+'0'], $root}}" is="a58da4cc"></template></view></view></template>

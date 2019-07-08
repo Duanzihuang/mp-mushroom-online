@@ -89,6 +89,7 @@
   height: 92rpx;
 }
 .course-detail-container .introduction .study-share .share-button.data-v-df5f8466 {
+  border: none;
   width: 92rpx;
   height: 92rpx;
   background-color: #fff;
@@ -97,10 +98,10 @@
   justify-content: center;
   align-items: center;
   float: right;
-}
-.course-detail-container .introduction .study-share .share-button ._img.data-v-df5f8466 {
-  width: 34rpx;
-  height: 34rpx;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC0AAAAtCAYAAAA6GuKaAAAD7ElEQVRoQ+2ZXYgbVRTHzz+J2SwurHTEfSo01lXEpQ+aZWdmN+JoS7soPqhUUbBYFFv8oOqD+GRBBX3wi8IW/HoUCoovsjSojIuaMxOCInbxQWhRFPFFXSsdTSb3yJRkGUI+bnYzbVcyj5P/Pfc3/3vuuWcmoC14YQsy0wj6Qq3a/9fp1dXVbWtrazYAg0gvpdLp9LkwDD+1bfv3+AosLy+PGYaxqJS6otvKADgbBEHJcZy/O2l6Ol0ul7cBeAXAg0SU3cDynzEM4/rp6el/W2M9zztJRHv7xRKRbyzLunEg6Gq1emUYhj4RXd1vgl6/K6V22bb9XaQRkZTv+zUiSmvG3G6a5s/t2q5OM/MHAO7WDN5NdjoIghscx/lnUKcjfTqd3jk7O3taC3plZWX72NjYTzHxGhEdFZE/B3iIQEQ+0cjpewHs6xR3IOhKpbJfKXUiFug50zRfHgBYS8rMBwC8R0SpTUP7vn9IRI63Aiml7rJt+yMtEk2R53kPAXgnyvNuQwZympkPA1hKCtrzvIMA3o4Di8i3AH4gonta814y0Mz8MIC34vU+AhaRWwG8BODQJQXt+/6jzbRbr1pRPRaR3dGG9X1/SUQOt6Dr9frOYrGoVz2SSI9OwET0db1e310sFv+IQMvl8pFUKvV6Ezo6Fa+Kl8vWw3Ss08OG9jzvMSI61tYCVIMg2OM4znoZdV03Nz4+/gIRXauUWrJtu6R9Ig4TmpmfAPBmP2DNonNelqjTzPwkgDfaNl0FwB7TNP8aBDSuTQza87wjRPRamzFMRPs2A5yY08z8NIBX25zkMAz3LiwsnO3lsO/7tyulrhORE7Zt/3JBcpqZbwHgtk32VRiGi/2AmXk/gFb7cGZubu4aAEqrYdrMRmTmZwHE+5QvgyBY7NbQx4GY+RiAx1v3Go3Gjvn5+R8Th/Z9Py8inxFRnojcTCZzR6FQOKez6Zj5+EU7EavV6mW1Wm0mm82eKhQKdR3gSHNRoXUh23Uj6CT66U6rMXJ65HSPXTpKj62SHo803+POL6aI3GdZVvyTwkZLcc9xnue9S0QHN3SMR52WiHzcGiwi71uW9UAipM2gpVLp8snJyVNEtKN5qzE1NTWRz+fXv071fN1yXXcil8v9CmAiBloRke8BSALwGSJaiAFHU3xhmubN2q1psw84CuD5BAB1QioRuc2yrM8HgnZdN5PL5T4EcKfOLEPUNIjoGdM0o/fKjle/fwLAzPcDeIqIbhoiWKdQdRE5KSIv2rZd6TVXP+j1sVGeZ7NZI5VKaY/RfchardYwDOO3mZmZ6Nt132voAH1nHIJgBD0EE7VCjJzWsmkIov8AnC9gTDZr5tgAAAAASUVORK5CYII=);
+  background-repeat: no-repeat;
+  background-size: 34rpx 34rpx;
+  background-position: 30rpx 30rpx;
 }
 .course-detail-container .catalog.data-v-df5f8466 {
   margin-top: 520rpx;
@@ -175,7 +176,7 @@
   width: 120rpx;
   height: 120rpx;
 }
-.course-detail-container .catalog .lecturer-container .info .follow.data-v-df5f8466 {
+.course-detail-container .catalog .lecturer-container .info .unfollow.data-v-df5f8466 {
   width: 136rpx;
   height: 52rpx;
   line-height: 52rpx;
@@ -183,6 +184,17 @@
   border: 2rpx solid #A8A8A8;
   border-radius: 26rpx;
   color: #A8A8A8;
+  font-size: 28rpx;
+}
+.course-detail-container .catalog .lecturer-container .info .follow.data-v-df5f8466 {
+  width: 136rpx;
+  height: 52rpx;
+  line-height: 52rpx;
+  text-align: center;
+  border: 2rpx solid #A8A8A8;
+  border-radius: 26rpx;
+  color: #fff;
+  background-color: #A8A8A8;
   font-size: 28rpx;
 }
 .course-detail-container .catalog .lecturer-container .introduce ._p.data-v-df5f8466 {
@@ -208,6 +220,7 @@
   margin-left: 6rpx;
   width: 96rpx;
   height: 96rpx;
+  border-radius: 50%;
 }
 .course-detail-container .catalog .comment-item .info .nickname-content.data-v-df5f8466 {
   flex: 1;
@@ -218,12 +231,15 @@
   color: #333333;
   font-size: 30rpx;
   font-weight: bold;
+  align-items: center;
+  display: flex;
 }
 .course-detail-container .catalog .comment-item .info .nickname-content .nickname ._div.data-v-df5f8466 {
+  height: 100%;
   display: inline-block;
 }
 .course-detail-container .catalog .comment-item .info .nickname-content ._div.data-v-df5f8466:nth-child(2) {
-  margin-top: 10rpx;
+  margin-top: 16rpx;
   color: #A8A8A8;
   font-size: 24rpx;
 }

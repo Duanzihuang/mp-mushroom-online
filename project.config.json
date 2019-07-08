@@ -10,7 +10,7 @@
 	},
 	"miniprogramRoot": "dist/wx/",
 	"compileType": "miniprogram",
-	"appid": "wxffa46fb8f2f7071d",
+	"appid": "wxfb52f2d7b2f6123a",
 	"projectname": "mp-mushroom-online",
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
@@ -32,7 +32,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 6,
+			"current": 7,
 			"list": [
 				{
 					"id": -1,
@@ -66,7 +66,7 @@
 					"id": 4,
 					"name": "课程详情",
 					"pathName": "pages/course-detail/main",
-					"query": "id=3",
+					"query": "id=4",
 					"scene": null
 				},
 				{
@@ -80,7 +80,14 @@
 					"id": 6,
 					"name": "播放页面",
 					"pathName": "pages/play/main",
-					"query": "id=3",
+					"query": "id=5",
+					"scene": null
+				},
+				{
+					"id": 7,
+					"name": "搜索页面",
+					"pathName": "pages/search/main",
+					"query": "",
 					"scene": null
 				}
 			]

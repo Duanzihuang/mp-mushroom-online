@@ -10,7 +10,7 @@
         <view class="_p data-v-baeb3610 subtitle">累计学习小时</view>
       </view>
       <view class="_div data-v-baeb3610 middle">
-        <view class="_p data-v-baeb3610 title">{{userInfo.study_hour}}</view>
+        <view class="_p data-v-baeb3610 title">{{userInfo.follow_count}}</view>
         <view class="_p data-v-baeb3610 subtitle">我的关注</view>
       </view>
       <view class="_div data-v-baeb3610 right">
@@ -27,15 +27,15 @@
         <view class="_p data-v-baeb3610">消息提醒</view>
         <image src="/static/images/arrow@2x.png" alt class="_img data-v-baeb3610"></image>
       </view>
-      <view class="_div data-v-baeb3610 cell">
-        <view class="_p data-v-baeb3610">清楚缓存</view>
+      <view bindtap="handleProxy" class="_div data-v-baeb3610 cell" data-eventid="{{'0'}}" data-comkey="{{$k}}">
+        <view class="_p data-v-baeb3610">清除缓存</view>
         <image src="/static/images/arrow@2x.png" alt class="_img data-v-baeb3610"></image>
       </view>
       <view class="_div data-v-baeb3610 cell">
         <view class="_p data-v-baeb3610">商务合作</view>
         <image src="/static/images/arrow@2x.png" alt class="_img data-v-baeb3610"></image>
       </view>
-      <view class="_div data-v-baeb3610 cell">
+      <view bindtap="handleProxy" class="_div data-v-baeb3610 cell" data-eventid="{{'1'}}" data-comkey="{{$k}}">
         <view class="_p data-v-baeb3610">在线客服</view>
         <image src="/static/images/arrow@2x.png" alt class="_img data-v-baeb3610"></image>
       </view>

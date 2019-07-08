@@ -74,7 +74,7 @@
                   {{item.content}}
                 </div>
               </div>
-              <p class="time">1小时前<p/>
+              <p class="time">{{item.comment_time}}<p/>
             </div>
             <div class="star">
               <!-- <img src="/static/images/comment@2x.png" alt=""> -->
@@ -103,19 +103,26 @@ export default {
       course_detail:null, // 课程详情数据
       isPlaying:false, //是否正在播放视频
       menus:['目录','讲师介绍','评价'],
-      selectIndex:0 // 选中的索引
+      selectIndex:0, // 选中的索引
+      isHidden:false // 是否隐藏
     }
   },
   onLoad(options){
     this.course_id = options.id
     this.getCourseDetailData()
   },
-  // onShow(){
-  //   this.getCourseDetailData()
-  // },
+  onShow(){
+    if (this.isHidden) {
+      this.getCourseDetailData()
+    }
+  },
+  onHide(){
+    this.isHidden = true
+  },
   onUnload(){
     this.isPlaying = false
     this.selectIndex = 0
+    this.isHidden = false
   },
   // 分享
   onShareAppMessage(options){
@@ -425,6 +432,7 @@ export default {
           margin-left:6rpx;
           width:96rpx;
           height: 96rpx;
+          border-radius: 50%;
         }
         .nickname-content{
           flex:1;

@@ -1,0 +1,9 @@
+<import src="/components/slots" /><template name="043551d6">
+  <view catchtouchmove bindtap="handleProxy" class="_div data-v-9180df9c modal-mask" hidden="{{!(visible)}}" data-eventid="{{'1'}}" data-comkey="{{$k}}"><template name="default"></template>
+    <view catchtap class="_div data-v-9180df9c modal-content" style=" {{('top:' + (top + 'rpx') + ';')}}">
+      <view class="_div data-v-9180df9c modal-title" wx:if="{{title}}">{{ title }}</view>
+      <view class="_div data-v-9180df9c modal-body"><template data="{{...$root[$p], ...$root[$k], $root}}" is="{{$slotdefault || 'default'}}"></template></view>
+      <view bindtap="handleProxy" class="_div data-v-9180df9c modal-action" data-eventid="{{'0'}}" data-comkey="{{$k}}">提交</view>
+    </view>
+  </view>
+</template>

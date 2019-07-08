@@ -3,6 +3,7 @@
     "pages/login/main",
     "pages/phone-login/main",
     "pages/home/main",
+    "pages/search/main",
     "pages/course/main",
     "pages/study/main",
     "pages/my/main",

@@ -47,11 +47,11 @@ export default {
   transition: all 0.2s ease-in-out;
 }
 .modal-content{
-  margin: 0 auto;
+  margin: 300rpx auto 0;
   width:600rpx;
   border-radius:7px;
-  padding:15px;
-  position:relative;
+  padding:15px 15px 10px 15px;
+  // position:relative;
   background-color:#fff;
   border:1px solid #e0e0e0;
   background-clip:padding-box;
@@ -66,7 +66,7 @@ export default {
   text-align: center;
 }
 .modal-body{
-  margin-bottom:15px;
+  margin-bottom:50rpx;
   font-size:14px;
   color:#80848f;
   height:100%;
@@ -74,10 +74,12 @@ export default {
   overflow:auto
 }
 .modal-action{
-  height: 30rpx;
-  line-height: 30rpx;
+  border-top: 1px solid #e0e0e0;
+  margin-top:30rpx;
+  padding-top:10rpx;
+  height: 80rpx;
+  line-height: 80rpx;
   color:#ff994d;
-  margin:10rpx;
   font-size: 16px;
   text-align: center;
 }

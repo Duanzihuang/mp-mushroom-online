@@ -1,10 +1,10 @@
 <template name="a58da4cc">
-  <view class="_div data-v-3754dcdd">
+  <view class="_div data-v-3754dcdd container">
     <view class="_div data-v-3754dcdd star-bg">
-      <image wx:key="item" key="{{item}}" src="/static/images/star_empty@2x.png" alt wx:for="{{5}}" wx:for-index="index" wx:for-item="item" class="_img data-v-3754dcdd"></image>
+      <image bindtap="handleProxy" wx:key="item" key="{{item}}" src="/static/images/star_empty@2x.png" alt data-eventid="{{'0_'+index}}" data-comkey="{{$k}}" wx:for="{{5}}" wx:for-index="index" wx:for-item="item" class="_img data-v-3754dcdd"></image>
     </view>
     <view class="_div data-v-3754dcdd star">
-      <image wx:key="item" key="{{item}}" src="/static/images/star_fill@2x.png" alt wx:for="{{score}}" wx:for-index="index" wx:for-item="item" class="_img data-v-3754dcdd"></image>
+      <image bindtap="handleProxy" wx:key="item" key="{{item}}" src="/static/images/star_fill@2x.png" alt data-eventid="{{'1_'+index}}" data-comkey="{{$k}}" wx:for="{{score}}" wx:for-index="index" wx:for-item="item" class="_img data-v-3754dcdd"></image>
     </view>
   </view>
 </template>

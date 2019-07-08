@@ -1,0 +1,18 @@
+<template name="f2653af8">
+  <view class="_div data-v-e41a1d18 search-container">
+    <view class="_div data-v-e41a1d18 search-head"><input focus class="_input data-v-e41a1d18 search-input" value="{{keyword}}" bindinput="handleProxy" placeholder="请输入课程名称" type="text" bindconfirm="handleProxy" bindfocus="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" /> <label class="_span data-v-e41a1d18 iconfont icon-search"></label> <label hidden="{{!(isFocus)}}" bindtap="handleProxy" class="_span data-v-e41a1d18 search-button" data-eventid="{{'1'}}" data-comkey="{{$k}}">取消</label></view>
+    <view class="_div data-v-e41a1d18 search-body">
+      <navigator url="{{'/pages/course-detail/main?id='+item.id}}" class="_navigator data-v-e41a1d18 course-item" wx:key="item.id" key="{{item.id}}" wx:for="{{courses}}" wx:for-index="index" wx:for-item="item">
+        <image src="{{item.icon}}" alt class="_img data-v-e41a1d18"></image>
+        <view class="_p data-v-e41a1d18 title">{{item.title}}</view>
+        <view class="_p data-v-e41a1d18 subtitle">{{item.subtitle}}</view>
+        <view class="_p data-v-e41a1d18 level" wx:if="{{item.level === 1}}">初级</view>
+        <view class="_p data-v-e41a1d18 level" wx:elif="{{item.level === 2}}">中级</view>
+        <view class="_p data-v-e41a1d18 level" wx:elif="{{item.level === 3}}">高级</view>
+      </navigator>
+      <view class="_div data-v-e41a1d18 empty" wx:if="{{courses.length === 0}}">
+        <view class="_p data-v-e41a1d18">暂无内容哦~</view>
+      </view>
+    </view>
+  </view>
+</template>

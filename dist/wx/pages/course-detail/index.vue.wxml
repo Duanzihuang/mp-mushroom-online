@@ -17,10 +17,7 @@
         <view class="_p data-v-df5f8466">{{course_detail.course.study_count}}人在学</view>
       </view>
       <view class="_div data-v-df5f8466 study-share">
-        <image bindtap="handleProxy" src="/static/images/start_study@2x.png" alt data-eventid="{{'1'}}" data-comkey="{{$k}}" class="_img data-v-df5f8466"></image>
-        <view class="_div data-v-df5f8466 share-button">
-          <image src="/static/images/share@2x.png" alt class="_img data-v-df5f8466"></image>
-        </view>
+        <image bindtap="handleProxy" src="/static/images/start_study@2x.png" alt data-eventid="{{'1'}}" data-comkey="{{$k}}" class="_img data-v-df5f8466"></image> <button open-type="share" class="_button data-v-df5f8466 share-button" plain></button>
       </view>
     </view>
     <view class="_div data-v-df5f8466 catalog">
@@ -39,7 +36,9 @@
               <view class="_p data-v-df5f8466">{{course_detail.lecturer.name}}</view>
               <view class="_p data-v-df5f8466">关注人数{{course_detail.lecturer.follow_count}}</view>
             </view>
-            <view class="_p data-v-df5f8466 follow"> 关注 </view>
+            <view bindtap="handleProxy" data-eventid="{{'3'}}" data-comkey="{{$k}}" class="_p data-v-df5f8466 {{[course_detail.lecturer.is_follow === 1 ? 'follow' : 'unfollow']}}">
+              {{course_detail.lecturer.is_follow === 1 ? '已关注' : '关注'}}
+            </view>
           </view>
           <view wx:if="{{course_detail.lecturer}}" class="_div data-v-df5f8466 introduce">
             <view class="_p data-v-df5f8466">{{course_detail.lecturer.introduction}}</view>
@@ -52,17 +51,17 @@
               <image src="{{item.avatar}}" alt class="_img data-v-df5f8466"></image>
               <view class="_div data-v-df5f8466 nickname-content">
                 <view class="_div data-v-df5f8466 nickname">
-                  <view class="_div data-v-df5f8466">{{item.nickname}}</view>  <view class="_div data-v-df5f8466"><template data="{{...$root[$kk+'1_'+index], $root}}" is="a58da4cc"></template></view>
+                  <view style="margin-top:12rpx;" class="_div data-v-df5f8466">{{item.nickname}}</view>   <view class="_div data-v-df5f8466"><template data="{{...$root[$kk+'1_'+index], $root}}" is="a58da4cc"></template></view>
                 </view>
                 <view class="_div data-v-df5f8466">
                   {{item.content}}
                 </view>
               </view>
-              <view class="_p data-v-df5f8466 time">1小时前</view>
+              <view class="_p data-v-df5f8466 time">{{item.comment_time}}</view>
               <view class="_p data-v-df5f8466"></view>
             </view>
             <view class="_div data-v-df5f8466 star">
-              <image bindtap="handleProxy" src="{{item.is_like == 1 ? '/static/images/like_normal@2x.png' : '/static/images/like_highlight@2x.png'}}" alt data-eventid="{{'3_'+index}}" data-comkey="{{$k}}" class="_img data-v-df5f8466"></image>
+              <image bindtap="handleProxy" src="{{item.is_like == 1 ? '/static/images/like_normal@2x.png' : '/static/images/like_highlight@2x.png'}}" alt data-eventid="{{'4_'+index}}" data-comkey="{{$k}}" class="_img data-v-df5f8466"></image>
             </view>
           </view>
           <view style="color:#636363;font-size:15px;padding:38rpx;" wx:if="{{!course_detail.comments}}" class="_p data-v-df5f8466"> 暂无评论哦，请学习之后再评价~ </view>

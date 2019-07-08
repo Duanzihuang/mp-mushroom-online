@@ -1,19 +1,20 @@
-<template name="3db40490">
+<import src="/components/Modal.vue.wxml" />
+<import src="/components/Star.vue.wxml" /><template name="3db40490">
   <view class="_div data-v-2b7c9040 play-container" wx:if="{{course_detail}}">
     <view class="_div data-v-2b7c9040 cover_image"><video bindplay="handleProxy" id="myVideo" src="{{video_url}}" controls data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_video data-v-2b7c9040"></video></view>
     <view class="_div data-v-2b7c9040 introduction">
       <view class="_div data-v-2b7c9040 title-and-info">
         <view class="_p data-v-2b7c9040 title">{{course_detail.course.title}}</view>
-        <view class="_p data-v-2b7c9040 info"><label class="_span data-v-2b7c9040">{{course_detail.course.study_count}}人学过</label> <label class="_span data-v-2b7c9040">难度:{{level}}人学过</label> <label class="_span data-v-2b7c9040">时长:{{course_detail.course.course_duration}}</label></view>
+        <view class="_p data-v-2b7c9040 info"><label class="_span data-v-2b7c9040">{{course_detail.course.study_count}}人学过</label> <label class="_span data-v-2b7c9040">难度:{{level}}</label> <label class="_span data-v-2b7c9040">时长:{{course_detail.course.course_duration}}</label></view>
       </view>
       <view class="_div data-v-2b7c9040 comment">
-        <image src="/static/images/evaluate@2x.png" alt class="_img data-v-2b7c9040"></image>
-      </view>
+        <image bindtap="handleProxy" src="/static/images/evaluate@2x.png" alt data-eventid="{{'1'}}" data-comkey="{{$k}}" class="_img data-v-2b7c9040"></image>
+      </view> <template bindpostComment="handleProxy" bindclose="handleProxy" data-eventid="{{'4'}}" data-comkey="{{$k}}" data="{{...$root[$kk+'1'], $root, $for:{default:'data-v-2b7c9040-default-1'},$slotdefault:'data-v-2b7c9040-default-1'}}" is="043551d6"></template>
     </view>
     <view class="_div data-v-2b7c9040 course-progress">
       <view class="_div data-v-2b7c9040 title">课程进度</view>
       <view class="_div data-v-2b7c9040 catelog-container">
-        <view bindtap="handleProxy" wx:key="item.id" key="{{item.id}}" data-eventid="{{'1_'+index}}" data-comkey="{{$k}}" wx:for="{{course_detail.videos}}" wx:for-index="index" wx:for-item="item" class="_p data-v-2b7c9040"><label class="_span data-v-2b7c9040 {{[index === playIndex ? 'active' : '']}}">{{index+1}}.{{item.name}}</label> <label wx:if="{{item.is_study == 1}}" class="_span data-v-2b7c9040 studied">已学习</label><label wx:else class="_span data-v-2b7c9040 {{['time', index === playIndex ? 'active' : '']}}">{{item.duration}}</label></view>
+        <view bindtap="handleProxy" wx:key="item.id" key="{{item.id}}" data-eventid="{{'5_'+index}}" data-comkey="{{$k}}" wx:for="{{course_detail.videos}}" wx:for-index="index" wx:for-item="item" class="_p data-v-2b7c9040"><label class="_span data-v-2b7c9040 {{[index === playIndex ? 'active' : '']}}">{{index+1}}.{{item.name}}</label> <label wx:if="{{item.is_study == 1}}" class="_span data-v-2b7c9040 studied">已学习</label><label wx:else class="_span data-v-2b7c9040 {{['time', index === playIndex ? 'active' : '']}}">{{item.duration}}</label></view>
       </view>
     </view>
   </view>

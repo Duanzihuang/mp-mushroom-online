@@ -1,6 +1,10 @@
 
+.container.data-v-3754dcdd {
+  position: relative;
+}
 .star.data-v-3754dcdd,
 .star-bg.data-v-3754dcdd {
+  float: left;
   display: flex;
   height: 50rpx;
   align-items: center;
@@ -12,5 +16,52 @@
 }
 .star.data-v-3754dcdd {
   position: absolute;
-  margin-top: -50rpx;
+  top: 0;
+  left: 0;
+}
+.modal-mask.data-v-9180df9c {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 10;
+  transition: all 0.2s ease-in-out;
+}
+.modal-content.data-v-9180df9c {
+  margin: 300rpx auto 0;
+  width: 600rpx;
+  border-radius: 14rpx;
+  padding: 30rpx 30rpx 20rpx 30rpx;
+  background-color: #fff;
+  border: 2rpx solid #e0e0e0;
+  background-clip: padding-box;
+  overflow: hidden;
+}
+.modal-title.data-v-9180df9c {
+  padding: 12rpx 30rpx 30rpx;
+  margin: 0;
+  font-size: 36rpx;
+  line-height: 1;
+  color: #1c2438;
+  text-align: center;
+}
+.modal-body.data-v-9180df9c {
+  margin-bottom: 50rpx;
+  font-size: 28rpx;
+  color: #80848f;
+  height: 100%;
+  line-height: 1.5;
+  overflow: auto;
+}
+.modal-action.data-v-9180df9c {
+  border-top: 2rpx solid #e0e0e0;
+  margin-top: 30rpx;
+  padding-top: 10rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  color: #ff994d;
+  font-size: 32rpx;
+  text-align: center;
 }

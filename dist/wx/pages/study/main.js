@@ -2,14 +2,14 @@ require("../../common/manifest.js")
 require("../../common/vendor.js")
 global.webpackJsonpMpvue([1],{
 
-/***/ 158:
+/***/ 167:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__index__ = __webpack_require__(159);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__index__ = __webpack_require__(168);
 
 
 
@@ -18,16 +18,16 @@ app.$mount();
 
 /***/ }),
 
-/***/ 159:
+/***/ 168:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_index_vue__ = __webpack_require__(161);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_2a65465a_hasScoped_true_transformToRequire_video_src_source_src_img_src_image_xlink_href_fileExt_template_wxml_script_js_style_wxss_platform_wx_node_modules_mpvue_loader_lib_selector_type_template_index_0_index_vue__ = __webpack_require__(166);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_index_vue__ = __webpack_require__(170);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_2a65465a_hasScoped_true_transformToRequire_video_src_source_src_img_src_image_xlink_href_fileExt_template_wxml_script_js_style_wxss_platform_wx_node_modules_mpvue_loader_lib_selector_type_template_index_0_index_vue__ = __webpack_require__(175);
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(160)
+  __webpack_require__(169)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
@@ -72,14 +72,14 @@ if (false) {(function () {
 
 /***/ }),
 
-/***/ 160:
+/***/ 169:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
 
-/***/ 161:
+/***/ 170:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -87,7 +87,7 @@ if (false) {(function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_asyncToGenerator__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_asyncToGenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_asyncToGenerator__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_DzhMpCircle__ = __webpack_require__(162);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_DzhMpCircle__ = __webpack_require__(171);
 
 
 //
@@ -159,16 +159,16 @@ if (false) {(function () {
 
 /***/ }),
 
-/***/ 162:
+/***/ 171:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_DzhMpCircle_vue__ = __webpack_require__(164);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_fe2fe66c_hasScoped_true_transformToRequire_video_src_source_src_img_src_image_xlink_href_fileExt_template_wxml_script_js_style_wxss_platform_wx_node_modules_mpvue_loader_lib_selector_type_template_index_0_DzhMpCircle_vue__ = __webpack_require__(165);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_DzhMpCircle_vue__ = __webpack_require__(173);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_fe2fe66c_hasScoped_true_transformToRequire_video_src_source_src_img_src_image_xlink_href_fileExt_template_wxml_script_js_style_wxss_platform_wx_node_modules_mpvue_loader_lib_selector_type_template_index_0_DzhMpCircle_vue__ = __webpack_require__(174);
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(163)
+  __webpack_require__(172)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
@@ -213,14 +213,14 @@ if (false) {(function () {
 
 /***/ }),
 
-/***/ 163:
+/***/ 172:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
 
-/***/ 164:
+/***/ 173:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -262,48 +262,62 @@ if (false) {(function () {
       default: 100
     }
   },
+  updated: function updated() {
+    this.drawProgress();
+  },
   onReady: function onReady() {
-    if (this.progress <= 30) {
-      this.foregroundColor = '#ff0000';
-    } else if (this.progress > 30 && this.progress < 50) {
-      this.foregroundColor = '#FF783B';
-    } else {
-      this.foregroundColor = '#B4D66E';
+    this.drawProgress();
+  },
+
+  methods: {
+    // 绘制进度
+    drawProgress: function drawProgress() {
+      if (this.progress <= 30) {
+        this.foregroundColor = '#ff0000';
+      } else if (this.progress > 30 && this.progress < 50) {
+        this.foregroundColor = '#FF783B';
+      } else {
+        this.foregroundColor = '#B4D66E';
+      }
+
+      // 背景色
+      var backgroundCtx = wx.createCanvasContext('backgroundCanvas' + this.canvasId);
+      // 前景色
+      var foregroundCtx = wx.createCanvasContext('foregroundCanvas' + this.canvasId);
+
+      // 绘制背景色
+      backgroundCtx.setStrokeStyle(this.backgroundColor);
+      backgroundCtx.setLineWidth(this.lineWidth);
+      // 绘制圆
+      backgroundCtx.arc(this.width / 2 + this.lineWidth / 2, this.height / 2 + this.lineWidth / 2, this.width / 2 - this.lineWidth, 0, 2 * Math.PI, true);
+      backgroundCtx.stroke();
+
+      // 绘制前景色
+      foregroundCtx.setStrokeStyle(this.foregroundColor);
+      foregroundCtx.setLineWidth(this.lineWidth);
+      foregroundCtx.setLineCap('round');
+      foregroundCtx.arc(this.width / 2 + this.lineWidth / 2, this.height / 2 + this.lineWidth / 2, this.width / 2 - this.lineWidth, -0.5 * Math.PI, this.progress / 100 * 2 * Math.PI - 0.5 * Math.PI, false);
+      foregroundCtx.stroke();
+
+      // 绘制文字
+      foregroundCtx.setFillStyle(this.foregroundColor);
+      foregroundCtx.setFontSize(12);
+      if (this.progress >= 99) {
+        foregroundCtx.fillText(parseInt(this.progress) + '%', this.width / 2 - 13, this.height / 2 + 6);
+      } else {
+        foregroundCtx.fillText(parseInt(this.progress) + '%', this.width / 2 - 10, this.height / 2 + 6);
+      }
+
+      // 绘制
+      backgroundCtx.draw();
+      foregroundCtx.draw();
     }
-
-    // 背景色
-    var backgroundCtx = wx.createCanvasContext('backgroundCanvas' + this.canvasId);
-    // 前景色
-    var foregroundCtx = wx.createCanvasContext('foregroundCanvas' + this.canvasId);
-
-    // 绘制背景色
-    backgroundCtx.setStrokeStyle(this.backgroundColor);
-    backgroundCtx.setLineWidth(this.lineWidth);
-    // 绘制圆
-    backgroundCtx.arc(this.width / 2 + this.lineWidth / 2, this.height / 2 + this.lineWidth / 2, this.width / 2 - this.lineWidth, 0, 2 * Math.PI, true);
-    backgroundCtx.stroke();
-
-    // 绘制前景色
-    foregroundCtx.setStrokeStyle(this.foregroundColor);
-    foregroundCtx.setLineWidth(this.lineWidth);
-    foregroundCtx.setLineCap('round');
-    foregroundCtx.arc(this.width / 2 + this.lineWidth / 2, this.height / 2 + this.lineWidth / 2, this.width / 2 - this.lineWidth, -0.5 * Math.PI, this.progress / 100 * 2 * Math.PI - 0.5 * Math.PI, false);
-    foregroundCtx.stroke();
-
-    // 绘制文字
-    foregroundCtx.setFillStyle(this.foregroundColor);
-    foregroundCtx.setFontSize(12);
-    foregroundCtx.fillText(parseInt(this.progress) + '%', this.width / 2 - 10, this.height / 2 + 6);
-
-    // 绘制
-    backgroundCtx.draw();
-    foregroundCtx.draw();
   }
 });
 
 /***/ }),
 
-/***/ 165:
+/***/ 174:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -343,7 +357,7 @@ if (false) {
 
 /***/ }),
 
-/***/ 166:
+/***/ 175:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -393,4 +407,4 @@ if (false) {
 
 /***/ })
 
-},[158]);
+},[167]);

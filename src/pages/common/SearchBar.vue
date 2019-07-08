@@ -25,7 +25,9 @@ export default {
   },
   methods:{
     search(){
-      console.log("666")
+      wx.navigateTo({
+        url: '/pages/search/main'
+      })
     }
   }
 }

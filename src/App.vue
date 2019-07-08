@@ -28,6 +28,7 @@ export default {
 </script>
 
 <style>
+@import "../static/styles/fonts/iconfont.css";
 page{
   background-color: #F8F8F8;
   height:100%;
