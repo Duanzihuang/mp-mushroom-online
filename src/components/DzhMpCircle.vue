@@ -74,16 +74,30 @@ export default {
 
       // 绘制文字
       foregroundCtx.setFillStyle(this.foregroundColor)
-      foregroundCtx.setFontSize(12)
+      // foregroundCtx.setFontSize(12)
+      const font_size = 12
+      foregroundCtx.font = font_size + 'px Helvetica'
+      // // 获取文字的宽度
+      // const text_width = foregroundCtx.measureText(parseInt(this.progress)+'%').width
+      // foregroundCtx.fillText(parseInt(this.progress)+'%',this.width / 2 - text_width / 2,this.height / 2 + font_size / 2)
       if (this.progress >= 99){
         foregroundCtx.fillText(parseInt(this.progress)+'%',this.width / 2 - 13,this.height / 2 + 6)
       } else {
         foregroundCtx.fillText(parseInt(this.progress)+'%',this.width / 2 - 10,this.height / 2 + 6)
       }
-
       // 绘制
       backgroundCtx.draw()
       foregroundCtx.draw()
+
+      // 动画重绘
+      // requestAnimationFrame(() => {
+      //   // 清除之前的绘制
+      //   foregroundCtx.clearRect(0, 0, this.width, this.height)
+      //   // 计算进度
+      //   if (this.speed < this.progress) {
+      //     this.speed += 1
+      //   }
+      // })
     }
   }
 }

@@ -64,7 +64,7 @@ export default {
       playIndex:0, // 正在播放视频的索引
       isValidateRight:false, // 是否校验过权限
       isShowCommentModal:false, // 是否显示评论框
-      score:0, // 评论的分数
+      score:5, // 评论的分数
       content:'',// 评论的内容
     }
   },
@@ -195,6 +195,7 @@ export default {
     // 关闭模态框
     closeModal(){
       this.isShowCommentModal = false
+      this.content = ''
     },
     // 获取选中的评论分数
     getChangeSocre(score){
@@ -346,8 +347,8 @@ export default {
     width:100rpx;
   }
   textarea{
+    width: 100%;
     height: 200rpx;
   }
 }
 </style>
-
